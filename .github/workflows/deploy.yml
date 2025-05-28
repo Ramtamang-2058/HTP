@@ -48,8 +48,20 @@ jobs:
           sudo mkdir -p ${{ env.APP_DIR }}
           sudo chown $USER:$USER ${{ env.APP_DIR }}
           
-          # Copy new code
-          rsync -av --delete ./ ${{ env.APP_DIR }}/
+          # Remove old virtual environment to avoid permission issues
+          if [ -d "${{ env.APP_DIR }}/venv" ]; then
+            sudo rm -rf ${{ env.APP_DIR }}/venv
+          fi
+          
+          # Copy new code (exclude venv and other unnecessary files)
+          rsync -av --delete \
+            --exclude='venv/' \
+            --exclude='*.pyc' \
+            --exclude='__pycache__/' \
+            --exclude='.git/' \
+            --exclude='.env' \
+            --exclude='db.sqlite3' \
+            ./ ${{ env.APP_DIR }}/
           cd ${{ env.APP_DIR }}
 
       - name: Set up virtual environment

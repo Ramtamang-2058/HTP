@@ -1,3 +1,10 @@
+name: Deploy to EC2
+
+on:
+  push:
+    branches:
+      - main
+
 jobs:
   deploy:
     runs-on: self-hosted
@@ -5,33 +12,28 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Set working dir
-        run: |
-          echo "Working dir:"
-          ls -la
-          cd <your-subfolder-if-any>
-          ls -la
-
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.10'
 
-      - name: Install dependencies
+      - name: Create virtualenv & install dependencies
         run: |
-          cd <your-subfolder-if-any>
           python3 -m venv venv
           source venv/bin/activate
+          pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Migrate
+      - name: Django migrate
         run: |
-          cd <your-subfolder-if-any>
           source venv/bin/activate
           python manage.py migrate
 
-      - name: Collect static
+      - name: Collect static files
         run: |
-          cd HTP
           source venv/bin/activate
           python manage.py collectstatic --noinput
+
+      - name: Restart Gunicorn
+        run: |
+          sudo systemctl restart gunicorn

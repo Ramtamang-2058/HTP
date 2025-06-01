@@ -43,6 +43,7 @@ ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', 'localhost,127.0.0.1').split(',')
 CSRF_TRUSTED_ORIGINS = [
     'https://hightechpioneer.com.np',
     'https://www.hightechpioneer.com.np',
+    'http://ec2-157-175-156-89.me-south-1.compute.amazonaws.com'
 ]
 
 # Security settings for production

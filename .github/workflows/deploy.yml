@@ -1,150 +1,150 @@
-name: Deploy Django to EC2
-
-on:
-  push:
-    branches:
-      - main
-  workflow_dispatch: # Allow manual triggering
-
-env:
-  PYTHON_VERSION: '3.10'
-  APP_DIR: /home/ubuntu/myapp # Adjust to your app directory
-
-jobs:
-  deploy:
-    runs-on: self-hosted
-    environment: production # Use GitHub environments for protection
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0 # Get full history for better rollback options
-
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: ${{ env.PYTHON_VERSION }}
-
-      - name: Cache pip dependencies
-        uses: actions/cache@v3
-        with:
-          path: ~/.cache/pip
-          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
-          restore-keys: |
-            ${{ runner.os }}-pip-
-
-      - name: Create backup of current deployment
-        run: |
-          if [ -d "${{ env.APP_DIR }}" ]; then
-            # Backup the entire app directory including SQLite database
-            sudo cp -r ${{ env.APP_DIR }} ${{ env.APP_DIR }}_backup_$(date +%Y%m%d_%H%M%S)
-            echo "Backup created (including SQLite database)"
-          fi
-
-      - name: Install/Update application
-        run: |
-          # Create app directory if it doesn't exist
-          sudo mkdir -p ${{ env.APP_DIR }}
-          sudo chown $USER:$USER ${{ env.APP_DIR }}
-          
-          # Remove old virtual environment to avoid permission issues
-          if [ -d "${{ env.APP_DIR }}/venv" ]; then
-            sudo rm -rf ${{ env.APP_DIR }}/venv
-          fi
-          
-          # Copy new code (exclude venv and other unnecessary files)
-          rsync -av --delete \
-            --exclude='venv/' \
-            --exclude='*.pyc' \
-            --exclude='__pycache__/' \
-            --exclude='.git/' \
-            --exclude='.env' \
-            --exclude='db.sqlite3' \
-            ./ ${{ env.APP_DIR }}/
-          cd ${{ env.APP_DIR }}
-
-      - name: Set up virtual environment
-        run: |
-          cd ${{ env.APP_DIR }}
-          python3 -m venv venv
-          source venv/bin/activate
-          pip install --upgrade pip
-          pip install -r requirements.txt
-
-      - name: Set up environment variables
-        run: |
-          cd ${{ env.APP_DIR }}
-          # Create .env file from GitHub secrets
-          echo "DEBUG=False" > .env
-          echo "SECRET_KEY=${{ secrets.DJANGO_SECRET_KEY }}" >> .env
-          echo "ALLOWED_HOSTS=${{ secrets.ALLOWED_HOSTS }}" >> .env
-          # SQLite database will be created automatically
-
-      - name: Run Django checks
-        run: |
-          cd ${{ env.APP_DIR }}
-          source venv/bin/activate
-          python manage.py check --deploy
-
-      - name: Run database migrations
-        run: |
-          cd ${{ env.APP_DIR }}
-          source venv/bin/activate
-          python manage.py migrate --noinput
-
-      - name: Collect static files
-        run: |
-          cd ${{ env.APP_DIR }}
-          source venv/bin/activate
-          python manage.py collectstatic --noinput --clear
-
-      - name: Update file permissions
-        run: |
-          cd ${{ env.APP_DIR }}
-          # Ensure SQLite database is writable
-          sudo chown -R www-data:www-data .
-          sudo chmod -R 755 .
-          # Make sure db.sqlite3 is writable if it exists
-          if [ -f "db.sqlite3" ]; then
-            sudo chmod 664 db.sqlite3
-          fi
-
-      - name: Restart services
-        run: |
-          # Test configuration before restarting
-          sudo systemctl is-active --quiet gunicorn && echo "Gunicorn is running"
-          
-          # Restart application server
-          sudo systemctl restart gunicorn
-          
-          # Restart nginx if you're using it
-          sudo systemctl reload nginx || true
-
-      - name: Health check
-        run: |
-          # Wait for service to start
-          sleep 10
-          
-          # Check if Gunicorn is running
-          if ! sudo systemctl is-active --quiet gunicorn; then
-            echo "Gunicorn failed to start"
-            exit 1
-          fi
-          
-          # Optional: HTTP health check
-          # curl -f http://localhost:8000/health/ || exit 1
-
-      - name: Cleanup old backups
-        run: |
-          # Keep only last 5 backups
-          find /home/ubuntu -name "myapp_backup_*" -type d | sort -r | tail -n +6 | xargs rm -rf || true
-
-      - name: Notify deployment status
-        if: always()
-        run: |
-          if [ "${{ job.status }}" = "success" ]; then
-            echo "✅ Deployment successful"
-          else
-            echo "❌ Deployment failed - check logs and consider rollback"
-          fi
+#name: Deploy Django to EC2
+#
+#on:
+#  push:
+#    branches:
+#      - main
+#  workflow_dispatch: # Allow manual triggering
+#
+#env:
+#  PYTHON_VERSION: '3.10'
+#  APP_DIR: /home/ubuntu/myapp # Adjust to your app directory
+#
+#jobs:
+#  deploy:
+#    runs-on: self-hosted
+#    environment: production # Use GitHub environments for protection
+#
+#    steps:
+#      - name: Checkout code
+#        uses: actions/checkout@v4
+#        with:
+#          fetch-depth: 0 # Get full history for better rollback options
+#
+#      - name: Set up Python
+#        uses: actions/setup-python@v4
+#        with:
+#          python-version: ${{ env.PYTHON_VERSION }}
+#
+#      - name: Cache pip dependencies
+#        uses: actions/cache@v3
+#        with:
+#          path: ~/.cache/pip
+#          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+#          restore-keys: |
+#            ${{ runner.os }}-pip-
+#
+#      - name: Create backup of current deployment
+#        run: |
+#          if [ -d "${{ env.APP_DIR }}" ]; then
+#            # Backup the entire app directory including SQLite database
+#            sudo cp -r ${{ env.APP_DIR }} ${{ env.APP_DIR }}_backup_$(date +%Y%m%d_%H%M%S)
+#            echo "Backup created (including SQLite database)"
+#          fi
+#
+#      - name: Install/Update application
+#        run: |
+#          # Create app directory if it doesn't exist
+#          sudo mkdir -p ${{ env.APP_DIR }}
+#          sudo chown $USER:$USER ${{ env.APP_DIR }}
+#
+#          # Remove old virtual environment to avoid permission issues
+#          if [ -d "${{ env.APP_DIR }}/venv" ]; then
+#            sudo rm -rf ${{ env.APP_DIR }}/venv
+#          fi
+#
+#          # Copy new code (exclude venv and other unnecessary files)
+#          rsync -av --delete \
+#            --exclude='venv/' \
+#            --exclude='*.pyc' \
+#            --exclude='__pycache__/' \
+#            --exclude='.git/' \
+#            --exclude='.env' \
+#            --exclude='db.sqlite3' \
+#            ./ ${{ env.APP_DIR }}/
+#          cd ${{ env.APP_DIR }}
+#
+#      - name: Set up virtual environment
+#        run: |
+#          cd ${{ env.APP_DIR }}
+#          python3 -m venv venv
+#          source venv/bin/activate
+#          pip install --upgrade pip
+#          pip install -r requirements.txt
+#
+#      - name: Set up environment variables
+#        run: |
+#          cd ${{ env.APP_DIR }}
+#          # Create .env file from GitHub secrets
+#          echo "DEBUG=False" > .env
+#          echo "SECRET_KEY=${{ secrets.DJANGO_SECRET_KEY }}" >> .env
+#          echo "ALLOWED_HOSTS=${{ secrets.ALLOWED_HOSTS }}" >> .env
+#          # SQLite database will be created automatically
+#
+#      - name: Run Django checks
+#        run: |
+#          cd ${{ env.APP_DIR }}
+#          source venv/bin/activate
+#          python manage.py check --deploy
+#
+#      - name: Run database migrations
+#        run: |
+#          cd ${{ env.APP_DIR }}
+#          source venv/bin/activate
+#          python manage.py migrate --noinput
+#
+#      - name: Collect static files
+#        run: |
+#          cd ${{ env.APP_DIR }}
+#          source venv/bin/activate
+#          python manage.py collectstatic --noinput --clear
+#
+#      - name: Update file permissions
+#        run: |
+#          cd ${{ env.APP_DIR }}
+#          # Ensure SQLite database is writable
+#          sudo chown -R www-data:www-data .
+#          sudo chmod -R 755 .
+#          # Make sure db.sqlite3 is writable if it exists
+#          if [ -f "db.sqlite3" ]; then
+#            sudo chmod 664 db.sqlite3
+#          fi
+#
+#      - name: Restart services
+#        run: |
+#          # Test configuration before restarting
+#          sudo systemctl is-active --quiet gunicorn && echo "Gunicorn is running"
+#
+#          # Restart application server
+#          sudo systemctl restart gunicorn
+#
+#          # Restart nginx if you're using it
+#          sudo systemctl reload nginx || true
+#
+#      - name: Health check
+#        run: |
+#          # Wait for service to start
+#          sleep 10
+#
+#          # Check if Gunicorn is running
+#          if ! sudo systemctl is-active --quiet gunicorn; then
+#            echo "Gunicorn failed to start"
+#            exit 1
+#          fi
+#
+#          # Optional: HTTP health check
+#          # curl -f http://localhost:8000/health/ || exit 1
+#
+#      - name: Cleanup old backups
+#        run: |
+#          # Keep only last 5 backups
+#          find /home/ubuntu -name "myapp_backup_*" -type d | sort -r | tail -n +6 | xargs rm -rf || true
+#
+#      - name: Notify deployment status
+#        if: always()
+#        run: |
+#          if [ "${{ job.status }}" = "success" ]; then
+#            echo "✅ Deployment successful"
+#          else
+#            echo "❌ Deployment failed - check logs and consider rollback"
+#          fi

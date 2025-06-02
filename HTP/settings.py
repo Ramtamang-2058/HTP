@@ -37,7 +37,15 @@ SECRET_KEY = os.getenv('SECRET_KEY', 'django-insecure-e0dzbbrmafwt!7!p#375#yv$6u
 DEBUG = os.getenv('DEBUG', 'False').lower() == 'true'
 
 # Allow environment variable to override hosts, fallback to safe defaults
-ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', 'localhost,127.0.0.1').split(',')
+# ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', 'localhost,127.0.0.1').split(',')
+ALLOWED_HOSTS = [
+    "127.0.0.1",
+    "localhost",
+    "157.175.156.89",
+    "ec2-157-175-156-89.me-south-1.compute.amazonaws.com",
+    "hightechpioneer.com.np",
+    "www.hightechpioneer.com.np"
+]
 
 # CSRF trusted origins for your domain
 CSRF_TRUSTED_ORIGINS = [

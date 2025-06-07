@@ -1,586 +1,163 @@
-<!-- This would be your Django template: home.html -->
-<!-- {% extends 'base.html' %} -->
-<!-- {% block title %}Home - Hi Tech Pioneer Nepal{% endblock %} -->
-
-<!-- {% block extra_css %} -->
-<style>
-    /* Hero Section */
-    .hero {
-        min-height: 80vh;
-        display: flex;
-        align-items: center;
-        position: relative;
-        overflow: hidden;
-    }
-
-    .hero-content {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 4rem;
-        align-items: center;
-    }
-
-    .hero-text h1 {
-        font-size: 3.5rem;
-        font-weight: 700;
-        line-height: 1.1;
-        margin-bottom: 1.5rem;
-        background: linear-gradient(135deg, var(--text-light) 0%, var(--accent-blue) 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-    }
-
-    .hero-text .highlight {
-        color: var(--accent-blue);
-        font-family: 'JetBrains Mono', monospace;
-        font-size: 0.8em;
-    }
-
-    .hero-text p {
-        font-size: 1.2rem;
-        color: var(--text-gray);
-        margin-bottom: 2rem;
-        max-width: 500px;
-    }
-
-    .hero-actions {
-        display: flex;
-        gap: 1rem;
-        flex-wrap: wrap;
-    }
-
-    .hero-image {
-        position: relative;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .tech-illustration {
-        width: 400px;
-        height: 400px;
-        position: relative;
-        background: radial-gradient(circle at center, rgba(0, 102, 204, 0.1) 0%, transparent 70%);
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .tech-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 1rem;
-        width: 250px;
-        height: 250px;
-    }
-
-    .tech-item {
-        background: var(--secondary-dark);
-        border: 1px solid var(--border-gray);
-        border-radius: 8px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 1.5rem;
-        color: var(--accent-blue);
-        transition: all 0.3s ease;
-        animation: float 6s ease-in-out infinite;
-    }
-
-    .tech-item:nth-child(1) { animation-delay: 0s; }
-    .tech-item:nth-child(2) { animation-delay: 0.5s; }
-    .tech-item:nth-child(3) { animation-delay: 1s; }
-    .tech-item:nth-child(4) { animation-delay: 1.5s; }
-    .tech-item:nth-child(5) { animation-delay: 2s; }
-    .tech-item:nth-child(6) { animation-delay: 2.5s; }
-    .tech-item:nth-child(7) { animation-delay: 3s; }
-    .tech-item:nth-child(8) { animation-delay: 3.5s; }
-    .tech-item:nth-child(9) { animation-delay: 4s; }
-
-    @keyframes float {
-        0%, 100% { transform: translateY(0px); }
-        50% { transform: translateY(-10px); }
-    }
-
-    .tech-item:hover {
-        background: var(--accent-blue);
-        color: var(--text-light);
-        transform: scale(1.1);
-    }
-
-    /* Stats Section */
-    .stats {
-        padding: 4rem 0;
-        background: var(--secondary-dark);
-        border-top: 1px solid var(--border-gray);
-        border-bottom: 1px solid var(--border-gray);
-    }
-
-    .stats-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 2rem;
-        text-align: center;
-    }
-
-    .stat-item h3 {
-        font-size: 2.5rem;
-        font-weight: 700;
-        color: var(--accent-blue);
-        margin-bottom: 0.5rem;
-        font-family: 'JetBrains Mono', monospace;
-    }
-
-    .stat-item p {
-        color: var(--text-gray);
-        font-size: 0.9rem;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-    }
-
-    /* Services Preview */
-    .services-preview {
-        padding: 5rem 0;
-    }
-
-    .services-header {
-        text-align: center;
-        margin-bottom: 4rem;
-    }
-
-    .services-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 2rem;
-    }
-
-    .service-card {
-        background: var(--secondary-dark);
-        border: 1px solid var(--border-gray);
-        border-radius: 8px;
-        padding: 2rem;
-        text-align: center;
-        transition: all 0.3s ease;
-        position: relative;
-        overflow: hidden;
-    }
-
-    .service-card::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: -100%;
-        width: 100%;
-        height: 2px;
-        background: var(--accent-blue);
-        transition: left 0.3s ease;
-    }
-
-    .service-card:hover::before {
-        left: 0;
-    }
-
-    .service-card:hover {
-        border-color: var(--accent-blue);
-        transform: translateY(-5px);
-    }
-
-    .service-card i {
-        font-size: 2.5rem;
-        color: var(--accent-blue);
-        margin-bottom: 1rem;
-    }
-
-    .service-card h3 {
-        font-size: 1.3rem;
-        margin-bottom: 1rem;
-        color: var(--text-light);
-    }
-
-    .service-card p {
-        color: var(--text-gray);
-        font-size: 0.9rem;
-        line-height: 1.6;
-    }
-
-    /* About Preview */
-    .about-preview {
-        padding: 5rem 0;
-        background: var(--secondary-dark);
-    }
-
-    .about-content {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 4rem;
-        align-items: center;
-    }
-
-    .about-text h2 {
-        font-size: 2.5rem;
-        margin-bottom: 1.5rem;
-        color: var(--text-light);
-    }
-
-    .about-text p {
-        color: var(--text-gray);
-        margin-bottom: 1.5rem;
-        font-size: 1.1rem;
-        line-height: 1.7;
-    }
-
-    .features-list {
-        list-style: none;
-        margin: 2rem 0;
-    }
-
-    .features-list li {
-        display: flex;
-        align-items: center;
-        gap: 0.75rem;
-        margin-bottom: 0.75rem;
-        color: var(--text-gray);
-    }
-
-    .features-list i {
-        color: var(--accent-blue);
-        font-size: 0.8rem;
-    }
-
-    .about-image {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        position: relative;
-    }
-
-    .company-badge {
-        background: var(--primary-dark);
-        border: 2px solid var(--accent-blue);
-        border-radius: 12px;
-        padding: 3rem 2rem;
-        text-align: center;
-        max-width: 300px;
-        position: relative;
-    }
-
-    .company-badge::before {
-        content: '';
-        position: absolute;
-        top: -1px;
-        left: -1px;
-        right: -1px;
-        bottom: -1px;
-        background: linear-gradient(45deg, var(--accent-blue), transparent, var(--accent-blue));
-        border-radius: 12px;
-        z-index: -1;
-    }
-
-    .company-badge h3 {
-        font-size: 1.5rem;
-        color: var(--text-light);
-        margin-bottom: 1rem;
-        font-family: 'JetBrains Mono', monospace;
-    }
-
-    .company-badge .year {
-        font-size: 3rem;
-        font-weight: 700;
-        color: var(--accent-blue);
-        display: block;
-        margin-bottom: 0.5rem;
-    }
-
-    .company-badge p {
-        color: var(--text-gray);
-        font-size: 0.9rem;
-    }
-
-    /* CTA Section */
-    .cta {
-        padding: 4rem 0;
-        text-align: center;
-        background: linear-gradient(135deg, var(--primary-dark) 0%, var(--secondary-dark) 100%);
-        border-top: 1px solid var(--border-gray);
-    }
-
-    .cta h2 {
-        font-size: 2.5rem;
-        margin-bottom: 1rem;
-        color: var(--text-light);
-    }
-
-    .cta p {
-        font-size: 1.1rem;
-        color: var(--text-gray);
-        margin-bottom: 2rem;
-        max-width: 600px;
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-    /* Responsive */
-    @media (max-width: 768px) {
-        .hero-content {
-            grid-template-columns: 1fr;
-            gap: 2rem;
-            text-align: center;
-        }
-
-        .hero-text h1 {
-            font-size: 2.5rem;
-        }
-
-        .tech-illustration {
-            width: 300px;
-            height: 300px;
-        }
-
-        .tech-grid {
-            width: 200px;
-            height: 200px;
-        }
-
-        .about-content {
-            grid-template-columns: 1fr;
-            gap: 2rem;
-        }
-
-        .services-grid {
-            grid-template-columns: 1fr;
-        }
-
-        .stats-grid {
-            grid-template-columns: repeat(2, 1fr);
-        }
-    }
-</style>
-<!-- {% endblock %} -->
-
-<!-- {% block content %} -->
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}High Tech Pioneer Nepal | Kathmandu{% endblock %}
+{% block content %}
 <!-- Hero Section -->
-<section class="hero">
-    <div class="container">
+<section class="hero" id="home">
         <div class="hero-content">
-            <div class="hero-text">
-                <h1>
-                    <span class="highlight">Since 1984</span><br>
-                    Pioneering Technology in Nepal
-                </h1>
-                <p>Leading ICT solutions provider delivering innovative software development, hardware manufacturing, and digital transformation services for over four decades.</p>
-                <div class="hero-actions">
-                    <a href="/services" class="btn">
-                        <i class="fas fa-rocket"></i>
-                        Our Services
-                    </a>
-                    <a href="/about" class="btn btn-outline">
-                        <i class="fas fa-info-circle"></i>
-                        Learn More
-                    </a>
-                </div>
-            </div>
-            <div class="hero-image">
-                <div class="tech-illustration">
-                    <div class="tech-grid">
-                        <div class="tech-item"><i class="fas fa-microchip"></i></div>
-                        <div class="tech-item"><i class="fas fa-code"></i></div>
-                        <div class="tech-item"><i class="fas fa-server"></i></div>
-                        <div class="tech-item"><i class="fas fa-database"></i></div>
-                        <div class="tech-item"><i class="fas fa-cloud"></i></div>
-                        <div class="tech-item"><i class="fas fa-mobile-alt"></i></div>
-                        <div class="tech-item"><i class="fas fa-cogs"></i></div>
-                        <div class="tech-item"><i class="fas fa-shield-alt"></i></div>
-                        <div class="tech-item"><i class="fas fa-network-wired"></i></div>
-                    </div>
-                </div>
-            </div>
+            <h1 class="typewriter-text">HIGH TECH PIONEER</h1>
+            <p id="typewriter">Connecting Nepal to the Cosmos</p>
+            <a href="#features" class="cta-button">EXPLORE TECHNOLOGY</a>
         </div>
+</section>
+<!-- Features Section -->
+<section class="features" id="features">
+  <h2>INNOVATION FOR NEPAL'S FUTURE | नेपालको भविष्यका लागि नवप्रवर्तन</h2>
+  <div class="features-grid">
+    <div class="feature-card">
+      <!-- Satellite icon from FontAwesome CDN -->
+      <img src="{% static 'img/home-2.jpeg' %}" alt="Rural Internet Access" width=auto height=200px; />
+      <h3>Rural Internet Access | ग्रामीण इन्टरनेट पहुँच</h3>
+      <p>
+        Deploying wireless and satellite connectivity solutions to bridge the digital divide in Nepal’s remote rural and mountain areas.<br>
+        नेपालको दुर्गम गाउँ र पहाडी क्षेत्रमा डिजिटल दूरी कम गर्न वायरलेस र सेटेलाइट आधारित इन्टरनेट सेवा विस्तार गर्दैछौं।
+      </p>
+    </div>
+    <div class="feature-card">
+      <!-- Robot/AI icon -->
+<img
+  src="{% static 'img/home-4.jpeg' %}"
+  alt="AI & Automation"
+  style="width: 100%; height: 200px; object-fit: cover;"
+/>
+      <h3>AI & Automation | कृत्रिम बुद्धिमत्ता र स्वचालन</h3>
+      <p>
+        Creating intelligent automation systems to empower industries, educational institutions, and smart city projects across Nepal.<br>
+        नेपालको उद्योग, शिक्षण संस्था र स्मार्ट सिटी योजनाहरूमा कृत्रिम बुद्धिमत्ता र स्वचालन प्रणाली विकास गर्दैछौं।
+      </p>
+    </div>
+    <div class="feature-card">
+      <!-- Smart city/IoT icon -->
+      <img src="{% static 'img/home-8.jpeg' %}" alt="Smart Infrastructure" width=auto height="200px" />
+      <h3>Smart Infrastructure | स्मार्ट पूर्वाधार</h3>
+      <p>
+        Developing IoT-driven solutions for energy management, traffic control, and environmental monitoring in urban centers like Kathmandu and Pokhara.<br>
+        काठमाडौं र पोखरा जस्ता शहरहरूमा ऊर्जा व्यवस्थापन, ट्राफिक नियन्त्रण र वातावरण अनुगमनका लागि IoT आधारित समाधानहरू विकास गर्दैछौं।
+      </p>
+    </div>
+  </div>
+</section>
+
+
+<!-- Text-Image Section 1 -->
+<section class="text-image-section" id="satellite">
+    <div class="text-image-container">
+        <div class="text-content">
+            <h2>Humanoid Robotics | नेपालमा नयाँ प्रविधिको युग</h2>
+            <p>
+                <strong>High Tech</strong>, founded by Munibhadur Sakya, is leading Nepal’s journey into humanoid robotics—bringing tomorrow’s technology today.
+                <br><em>High Tech कम्पनीले नेपालमा मानवरूपी रोबोटमार्फत भविष्यको प्रविधि ल्याउँदैछ।</em>
+            </p>
+            <p>
+                We're co-developing robots with smooth motion, automation, and Nepali language interaction to meet local needs.
+                <br><em>हामी संवेदनशील चाल, स्वचालन र नेपाली भाषासहित स्थानीय आवश्यकता पूरा गर्ने रोबोट विकासमा सहकार्य गर्दैछौं।</em>
+            </p>
+
+            <a href="#" class="learn-more">Learn More</a>
+        </div>
+        <div class="image-content satellite-image"></div>
     </div>
 </section>
 
+
+<!-- Text-Image Section 2 -->
+<section class="text-image-section" id="connectivity">
+    <div class="text-image-container">
+        <div class="text-content">
+            <h2>Supercomputing & National Connectivity</h2>
+            <p>
+                High Tech is pioneering Nepal’s first computer manufacturing company with its own power plant, while also building the nation's first supercomputer — a new era of digital independence begins here.
+                <br><em>हाइ-टेकले आफ्नै पावर प्लान्टसहित नेपालको पहिलो कम्प्युटर उत्पादन कम्पनी र सुपर कम्प्युटर निर्माण गर्दैछ।</em>
+            </p>
+            <p>
+                Integrating these breakthroughs with satellite connectivity, we’re creating faster, smarter infrastructure for businesses, students, and local innovators across the country.
+                <br><em>यी प्रविधिहरूले इन्टरनेट पहुँचलाई तीव्र, भरपर्दो र सबैका लागि उपलब्ध बनाउँदैछन्।</em>
+            </p>
+            <a href="#" class="learn-more">Discover More</a>
+        </div>
+        <div class="image-content space-image"></div>
+    </div>
+</section>
+
+<!-- Text-Image Section 3 -->
+<section class="text-image-section" id="future">
+    <div class="text-image-container">
+        <div class="text-content">
+            <h2>Devanagari Innovation | देवनागरी प्रविधिमा नयाँ युग</h2>
+            <p>
+                <em>देवनागरी नेपाली टेक्स्ट पहिलो पटक हाइ-टेक पायोनियर मुनी भदुर साक्य द्वारा विकास गरिएको।</em><br>
+                High Tech is revolutionizing digital technology with cutting-edge Devanagari script recognition and processing — enabling smarter AI, OCR, and language solutions tailored for Nepali and other Indic languages.
+                <br><em>हाइ-टेकले देवनागरी लिपि पहिचान र प्रशोधनमा नवीनतम प्रविधि ल्याउँदै कृत्रिम बुद्धिमत्ता, OCR, र नेपाली लगायत अन्य भाषाको समाधान विकास गरिरहेको छ।</em>
+            </p>
+            <p>
+                Our platforms empower education, government, and business sectors by digitizing handwritten documents, enabling voice interaction, and supporting Nepali language computing for a truly inclusive digital Nepal.
+                <br><em>हामीले शैक्षिक, सरकारी, र व्यावसायिक क्षेत्रमा हस्तलिखित कागजात डिजिटल बनाउने, भ्वाइस अन्तरक्रिया सक्षम गर्ने र नेपाली भाषामा कम्प्युटिङलाई सशक्त पार्ने प्रविधि विकास गरिरहेका छौं।</em>
+            </p>
+            <a href="#" class="learn-more">Explore Innovation</a>
+        </div>
+        <div class="image-content tech-image"></div>
+    </div>
+</section>
 <!-- Stats Section -->
 <section class="stats">
-    <div class="container">
-        <div class="stats-grid">
-            <div class="stat-item">
-                <h3>40+</h3>
-                <p>Years of Excellence</p>
-            </div>
-            <div class="stat-item">
-                <h3>500+</h3>
-                <p>Projects Completed</p>
-            </div>
-            <div class="stat-item">
-                <h3>50+</h3>
-                <p>Expert Team Members</p>
-            </div>
-            <div class="stat-item">
-                <h3>ISO</h3>
-                <p>9001:2000 Certified</p>
-            </div>
-        </div>
+  <div class="stats-container">
+    <div class="stat-item">
+      <h3>99.7%</h3>
+      <p>Power Plant Uptime Reliability</p>
     </div>
+    <div class="stat-item">
+      <h3>1st</h3>
+      <p>Nepal’s First Supercomputer Operated</p>
+    </div>
+    <div class="stat-item">
+      <h3>1st</h3>
+      <p>Custom-Built Computer Models Manufactured</p>
+    </div>
+    <div class="stat-item">
+      <h3>24/7</h3>
+      <p>Technology & Network Coverage Nationwide</p>
+    </div>
+  </div>
 </section>
 
-<!-- Services Preview -->
-<section class="services-preview">
-    <div class="container">
-        <div class="services-header">
-            <h2 class="section-title">Our Core Services</h2>
-            <p class="section-subtitle">Comprehensive ICT solutions tailored to meet your business needs with cutting-edge technology and expert implementation.</p>
-        </div>
-        <div class="services-grid">
-            <div class="service-card">
-                <i class="fas fa-code"></i>
-                <h3>Custom Software Development</h3>
-                <p>Bespoke software solutions designed to streamline your business processes and enhance operational efficiency.</p>
-            </div>
-            <div class="service-card">
-                <i class="fas fa-microchip"></i>
-                <h3>Hardware Manufacturing</h3>
-                <p>High-quality computer systems and hardware components manufactured to meet local market demands.</p>
-            </div>
-            <div class="service-card">
-                <i class="fas fa-university"></i>
-                <h3>E-Governance Solutions</h3>
-                <p>Digital government platforms that improve citizen services and administrative efficiency.</p>
-            </div>
-            <div class="service-card">
-                <i class="fas fa-network-wired"></i>
-                <h3>System Integration</h3>
-                <p>Seamless integration of disparate systems to create unified, efficient business operations.</p>
-            </div>
-            <div class="service-card">
-                <i class="fas fa-chart-line"></i>
-                <h3>ICT Consulting</h3>
-                <p>Strategic technology consulting to help businesses leverage ICT for competitive advantage.</p>
-            </div>
-            <div class="service-card">
-                <i class="fas fa-cloud"></i>
-                <h3>Cloud Solutions</h3>
-                <p>Scalable cloud infrastructure and migration services for modern business requirements.</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- About Preview -->
-<section class="about-preview">
-    <div class="container">
-        <div class="about-content">
-            <div class="about-text">
-                <h2>Four Decades of Innovation</h2>
-                <p>Founded in 1984 in Kathmandu, Nepal, Hi Tech Pioneer Pvt. Ltd. has been at the forefront of the country's ICT revolution. From pioneering computer manufacturing to developing cutting-edge software solutions, we've consistently evolved with technology trends.</p>
-                <p>Our commitment to excellence and innovation has made us a trusted partner for businesses across Nepal and beyond, delivering solutions that drive digital transformation and business growth.</p>
-
-                <ul class="features-list">
-                    <li><i class="fas fa-check"></i> ISO 9001:2000 Quality Certification</li>
-                    <li><i class="fas fa-check"></i> Partnership with JNICT for Global Standards</li>
-                    <li><i class="fas fa-check"></i> 40+ Years of Industry Experience</li>
-                    <li><i class="fas fa-check"></i> Expert Team of 50+ Professionals</li>
-                </ul>
-
-                <a href="/about" class="btn">
-                    <i class="fas fa-arrow-right"></i>
-                    Discover Our Story
-                </a>
-            </div>
-            <div class="about-image">
-                <div class="company-badge">
-                    <h3>Established</h3>
-                    <span class="year">1984</span>
-                    <p>Pioneering Nepal's ICT landscape with innovative solutions and unwavering commitment to excellence.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- CTA Section -->
-<section class="cta">
-    <div class="container">
-        <h2>Ready to Transform Your Business?</h2>
-        <p>Let's discuss how our expertise in ICT solutions can help drive your business forward. Get in touch with our team of experts today.</p>
-        <div class="hero-actions">
-            <a href="/contact" class="btn">
-                <i class="fas fa-envelope"></i>
-                Get In Touch
-            </a>
-            <a href="/projects" class="btn btn-outline">
-                <i class="fas fa-eye"></i>
-                View Our Work
-            </a>
-        </div>
-    </div>
-</section>
- {% endblock %}
-
-{% block extra_js %}
 <script>
-    // Animate stats on scroll
-    const observerOptions = {
-        threshold: 0.5,
-        rootMargin: '0px 0px -50px 0px'
-    };
+    const texts = [
+        "Leading Nepal's Tech Evolution",
+        "नेपाली प्रविधिको नेतृत्व गर्दै"
+    ];
+    let i = 0, j = 0, currentText = '', isDeleting = false;
+    const speed = 80;
+    const typewriterElement = document.getElementById('typewriter');
 
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const statItems = entry.target.querySelectorAll('.stat-item h3');
-                statItems.forEach((item, index) => {
-                    const finalValue = item.textContent;
-                    if (!isNaN(finalValue.replace('+', ''))) {
-                        animateCounter(item, 0, parseInt(finalValue.replace('+', '')), 2000, '+');
-                    }
-                });
-                observer.unobserve(entry.target);
-            }
-        });
-    }, observerOptions);
+    function type() {
+        if (i >= texts.length) i = 0;
+        currentText = texts[i];
 
-    const statsSection = document.querySelector('.stats');
-    if (statsSection) {
-        observer.observe(statsSection);
+        if (!isDeleting && j <= currentText.length) {
+            typewriterElement.textContent = currentText.slice(0, j);
+            j++;
+            setTimeout(type, speed);
+        } else if (isDeleting && j >= 0) {
+            typewriterElement.textContent = currentText.slice(0, j);
+            j--;
+            setTimeout(type, speed / 2);
+        } else {
+            isDeleting = !isDeleting;
+            if (!isDeleting) i++;
+            setTimeout(type, 1000);
+    }
     }
 
-    function animateCounter(element, start, end, duration, suffix = '') {
-        const startTime = performance.now();
-
-        function updateCounter(currentTime) {
-            const elapsedTime = currentTime - startTime;
-            const progress = Math.min(elapsedTime / duration, 1);
-            const currentValue = Math.floor(progress * (end - start) + start);
-
-            element.textContent = currentValue + suffix;
-
-            if (progress < 1) {
-                requestAnimationFrame(updateCounter);
-            }
-        }
-
-        requestAnimationFrame(updateCounter);
-    }
-
-    // Add scroll-triggered animations for service cards
-    const serviceCards = document.querySelectorAll('.service-card');
-    const cardObserver = new IntersectionObserver((entries) => {
-        entries.forEach((entry, index) => {
-            if (entry.isIntersecting) {
-                setTimeout(() => {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }, index * 100);
-            }
-        });
-    }, { threshold: 0.2 });
-
-    serviceCards.forEach(card => {
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(20px)';
-        card.style.transition = 'all 0.6s ease';
-        cardObserver.observe(card);
-    });
+    type();
 </script>
- {% endblock %}
+{% endblock %}

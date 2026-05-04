@@ -1,163 +1,1014 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block title %}High Tech Pioneer Nepal | Kathmandu{% endblock %}
+{% block title %}High Tech Pioneer Nepal | Pioneering Technology Since 1984{% endblock %}
+
 {% block content %}
-<!-- Hero Section -->
+
+<!-- ═══════════════════════════════════════
+     HERO
+═══════════════════════════════════════ -->
 <section class="hero" id="home">
-        <div class="hero-content">
-            <h1 class="typewriter-text">HIGH TECH PIONEER</h1>
-            <p id="typewriter">Connecting Nepal to the Cosmos</p>
-            <a href="#features" class="cta-button">EXPLORE TECHNOLOGY</a>
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-grid"></div>
+    <div class="container hero-content">
+        <div class="hero-badge">
+            <i class="fas fa-circle" style="font-size:0.5rem;"></i>
+            Nepal's Technology Pioneer Since 1984
         </div>
-</section>
-<!-- Features Section -->
-<section class="features" id="features">
-  <h2>INNOVATION FOR NEPAL'S FUTURE | नेपालको भविष्यका लागि नवप्रवर्तन</h2>
-  <div class="features-grid">
-    <div class="feature-card">
-      <!-- Satellite icon from FontAwesome CDN -->
-      <img src="{% static 'img/home-2.jpeg' %}" alt="Rural Internet Access" width=auto height=200px; />
-      <h3>Rural Internet Access | ग्रामीण इन्टरनेट पहुँच</h3>
-      <p>
-        Deploying wireless and satellite connectivity solutions to bridge the digital divide in Nepal’s remote rural and mountain areas.<br>
-        नेपालको दुर्गम गाउँ र पहाडी क्षेत्रमा डिजिटल दूरी कम गर्न वायरलेस र सेटेलाइट आधारित इन्टरनेट सेवा विस्तार गर्दैछौं।
-      </p>
-    </div>
-    <div class="feature-card">
-      <!-- Robot/AI icon -->
-<img
-  src="{% static 'img/home-4.jpeg' %}"
-  alt="AI & Automation"
-  style="width: 100%; height: 200px; object-fit: cover;"
-/>
-      <h3>AI & Automation | कृत्रिम बुद्धिमत्ता र स्वचालन</h3>
-      <p>
-        Creating intelligent automation systems to empower industries, educational institutions, and smart city projects across Nepal.<br>
-        नेपालको उद्योग, शिक्षण संस्था र स्मार्ट सिटी योजनाहरूमा कृत्रिम बुद्धिमत्ता र स्वचालन प्रणाली विकास गर्दैछौं।
-      </p>
-    </div>
-    <div class="feature-card">
-      <!-- Smart city/IoT icon -->
-      <img src="{% static 'img/home-8.jpeg' %}" alt="Smart Infrastructure" width=auto height="200px" />
-      <h3>Smart Infrastructure | स्मार्ट पूर्वाधार</h3>
-      <p>
-        Developing IoT-driven solutions for energy management, traffic control, and environmental monitoring in urban centers like Kathmandu and Pokhara.<br>
-        काठमाडौं र पोखरा जस्ता शहरहरूमा ऊर्जा व्यवस्थापन, ट्राफिक नियन्त्रण र वातावरण अनुगमनका लागि IoT आधारित समाधानहरू विकास गर्दैछौं।
-      </p>
-    </div>
-  </div>
-</section>
-
-
-<!-- Text-Image Section 1 -->
-<section class="text-image-section" id="satellite">
-    <div class="text-image-container">
-        <div class="text-content">
-            <h2>Humanoid Robotics | नेपालमा नयाँ प्रविधिको युग</h2>
-            <p>
-                <strong>High Tech</strong>, founded by Munibhadur Sakya, is leading Nepal’s journey into humanoid robotics—bringing tomorrow’s technology today.
-                <br><em>High Tech कम्पनीले नेपालमा मानवरूपी रोबोटमार्फत भविष्यको प्रविधि ल्याउँदैछ।</em>
-            </p>
-            <p>
-                We're co-developing robots with smooth motion, automation, and Nepali language interaction to meet local needs.
-                <br><em>हामी संवेदनशील चाल, स्वचालन र नेपाली भाषासहित स्थानीय आवश्यकता पूरा गर्ने रोबोट विकासमा सहकार्य गर्दैछौं।</em>
-            </p>
-
-            <a href="#" class="learn-more">Learn More</a>
+        <h1>Pioneering Nepal's<br><span>Digital Future</span></h1>
+        <p class="hero-sub">
+            From Nepal's first Devanagari computing to humanoid robotics, AI systems, supercomputing, and satellite connectivity — High Tech Pioneer is building tomorrow's Nepal, today.
+        </p>
+        <p class="hero-typewriter">&gt;&nbsp;<span id="typewriter"></span><span class="hero-cursor">&nbsp;</span></p>
+        <div class="hero-actions">
+            <a href="#projects" class="btn btn-primary"><i class="fas fa-rocket"></i> Explore Our Projects</a>
+            <a href="#about" class="btn btn-outline"><i class="fas fa-circle-info"></i> About Us</a>
         </div>
-        <div class="image-content satellite-image"></div>
     </div>
+    <div class="hero-scroll"><span>Scroll</span><i class="fas fa-chevron-down"></i></div>
 </section>
 
-
-<!-- Text-Image Section 2 -->
-<section class="text-image-section" id="connectivity">
-    <div class="text-image-container">
-        <div class="text-content">
-            <h2>Supercomputing & National Connectivity</h2>
-            <p>
-                High Tech is pioneering Nepal’s first computer manufacturing company with its own power plant, while also building the nation's first supercomputer — a new era of digital independence begins here.
-                <br><em>हाइ-टेकले आफ्नै पावर प्लान्टसहित नेपालको पहिलो कम्प्युटर उत्पादन कम्पनी र सुपर कम्प्युटर निर्माण गर्दैछ।</em>
-            </p>
-            <p>
-                Integrating these breakthroughs with satellite connectivity, we’re creating faster, smarter infrastructure for businesses, students, and local innovators across the country.
-                <br><em>यी प्रविधिहरूले इन्टरनेट पहुँचलाई तीव्र, भरपर्दो र सबैका लागि उपलब्ध बनाउँदैछन्।</em>
-            </p>
-            <a href="#" class="learn-more">Discover More</a>
+<!-- ═══════════════════════════════════════
+     STATS BAR
+═══════════════════════════════════════ -->
+<section class="stats-bar">
+    <div class="container">
+        <div class="stat-item">
+            <h3><span data-count="40" data-suffix="+">40+</span></h3>
+            <p>Years of Innovation</p>
         </div>
-        <div class="image-content space-image"></div>
-    </div>
-</section>
-
-<!-- Text-Image Section 3 -->
-<section class="text-image-section" id="future">
-    <div class="text-image-container">
-        <div class="text-content">
-            <h2>Devanagari Innovation | देवनागरी प्रविधिमा नयाँ युग</h2>
-            <p>
-                <em>देवनागरी नेपाली टेक्स्ट पहिलो पटक हाइ-टेक पायोनियर मुनी भदुर साक्य द्वारा विकास गरिएको।</em><br>
-                High Tech is revolutionizing digital technology with cutting-edge Devanagari script recognition and processing — enabling smarter AI, OCR, and language solutions tailored for Nepali and other Indic languages.
-                <br><em>हाइ-टेकले देवनागरी लिपि पहिचान र प्रशोधनमा नवीनतम प्रविधि ल्याउँदै कृत्रिम बुद्धिमत्ता, OCR, र नेपाली लगायत अन्य भाषाको समाधान विकास गरिरहेको छ।</em>
-            </p>
-            <p>
-                Our platforms empower education, government, and business sectors by digitizing handwritten documents, enabling voice interaction, and supporting Nepali language computing for a truly inclusive digital Nepal.
-                <br><em>हामीले शैक्षिक, सरकारी, र व्यावसायिक क्षेत्रमा हस्तलिखित कागजात डिजिटल बनाउने, भ्वाइस अन्तरक्रिया सक्षम गर्ने र नेपाली भाषामा कम्प्युटिङलाई सशक्त पार्ने प्रविधि विकास गरिरहेका छौं।</em>
-            </p>
-            <a href="#" class="learn-more">Explore Innovation</a>
+        <div class="stat-item">
+            <h3>ISO</h3>
+            <p>9001:2015 Certified</p>
         </div>
-        <div class="image-content tech-image"></div>
+        <div class="stat-item">
+            <h3>1st</h3>
+            <p>Nepal's Supercomputer</p>
+        </div>
+        <div class="stat-item">
+            <h3>1st</h3>
+            <p>Devanagari Computing</p>
+        </div>
+        <div class="stat-item">
+            <h3>24/7</h3>
+            <p>Technical Support</p>
+        </div>
     </div>
 </section>
-<!-- Stats Section -->
-<section class="stats">
-  <div class="stats-container">
-    <div class="stat-item">
-      <h3>99.7%</h3>
-      <p>Power Plant Uptime Reliability</p>
+
+<!-- ═══════════════════════════════════════
+     ABOUT
+═══════════════════════════════════════ -->
+<section class="section" id="about" style="background:var(--bg);">
+    <div class="container">
+        <div class="grid-2">
+            <div data-aos="fade-right">
+                <span class="label"><i class="fas fa-building"></i> Who We Are</span>
+                <h2 class="sec-title">Nepal's Oldest &amp; Most Innovative Tech Company</h2>
+                <p class="sec-desc">
+                    Founded in 1984 by <strong style="color:var(--text);">Muni Bahadur Sakya</strong> — Nepal's first computer scientist — High Tech Pioneer has spent over 40 years pushing the boundaries of technology in Nepal.
+                </p>
+                <p style="color:var(--text-2);margin-top:1.5rem;line-height:1.8;font-size:0.925rem;">
+                    From demonstrating the first Nepali-language computing in 1983, to operating Nepal's first supercomputer in 2006, to now building humanoid robots and AI-powered mobile robots — we have always been at the forefront of Nepal's technological advancement.
+                </p>
+                <p style="color:var(--text-2);margin-top:1rem;line-height:1.8;font-size:0.925rem;">
+                    Based in Dillibazar, Kathmandu, we are ISO 9001:2015 certified and committed to connecting Nepal to the global digital economy through cutting-edge hardware, software, artificial intelligence, and robotics solutions.
+                </p>
+                <p style="color:var(--text-2);margin-top:1rem;line-height:1.8;font-size:0.925rem;">
+                    <strong style="color:var(--text);">देश र विश्वलाई जोड्दै — Connecting Nepal to the World.</strong> Our work spans rural satellite connectivity, humanoid robotics, AI systems, Devanagari NLP, and national supercomputing infrastructure.
+                </p>
+                <div class="tags">
+                    <span class="tag"><i class="fas fa-award" style="color:var(--accent);margin-right:0.3rem;"></i>ISO 9001:2015</span>
+                    <span class="tag">Robotics</span>
+                    <span class="tag">Artificial Intelligence</span>
+                    <span class="tag">Supercomputing</span>
+                    <span class="tag">Satellite Connectivity</span>
+                    <span class="tag">Devanagari NLP</span>
+                    <span class="tag">Computer Vision</span>
+                    <span class="tag">Smart Systems</span>
+                    <span class="tag">Est. 1984</span>
+                </div>
+            </div>
+            <div data-aos="fade-left">
+                <div class="about-img-wrap">
+                    <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80" alt="High Tech Pioneer — Advanced Technology">
+                    <div class="about-img-overlay"></div>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="stat-item">
-      <h3>1st</h3>
-      <p>Nepal’s First Supercomputer Operated</p>
-    </div>
-    <div class="stat-item">
-      <h3>1st</h3>
-      <p>Custom-Built Computer Models Manufactured</p>
-    </div>
-    <div class="stat-item">
-      <h3>24/7</h3>
-      <p>Technology & Network Coverage Nationwide</p>
-    </div>
-  </div>
 </section>
 
-<script>
-    const texts = [
-        "Leading Nepal's Tech Evolution",
-        "नेपाली प्रविधिको नेतृत्व गर्दै"
-    ];
-    let i = 0, j = 0, currentText = '', isDeleting = false;
-    const speed = 80;
-    const typewriterElement = document.getElementById('typewriter');
+<!-- ═══════════════════════════════════════
+     PROJECTS
+═══════════════════════════════════════ -->
+<section class="section projects-section" id="projects">
+    <div class="container">
+        <div style="text-align:center;max-width:700px;margin:0 auto;" data-aos="fade-up">
+            <span class="label"><i class="fas fa-microchip"></i> What We Build</span>
+            <h2 class="sec-title">Our Projects &amp; Innovations</h2>
+            <p class="sec-desc" style="margin:0 auto;">From humanoid robots to satellite connectivity, we are building the technology stack that will define Nepal's digital future.</p>
+        </div>
+        <div class="projects-grid">
 
-    function type() {
-        if (i >= texts.length) i = 0;
-        currentText = texts[i];
+            <!-- ── Merged Robotics Platform (wide card, 2-col) ── -->
+            <div class="proj-card proj-card-wide" data-aos="fade-up">
+                <div class="proj-wide-top">
+                    <div class="proj-tag">Robotics Platform &middot; InMoov + AI Systems &middot; Active Development</div>
+                    <div class="proj-wide-title">Nepal's Robotics Research Platform</div>
+                </div>
+                <div class="proj-wide-inner">
+                    <!-- InMoov half -->
+                    <div class="proj-wide-half">
+                        <div class="proj-wide-img-wrap">
+                            <img class="proj-wide-img" src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=800&q=80" alt="InMoov Humanoid Robot">
+                        </div>
+                        <div class="proj-wide-body">
+                            <div class="proj-sub-tag">Humanoid · 3D Printing · Servo</div>
+                            <h4>InMoov Humanoid Robot</h4>
+                            <p>Nepal's build of the world's first open-source, life-size 3D-printed humanoid robot. Custom-modified servo motors imported from China, a proprietary gear system for torque efficiency, and Nepali-language voice interaction — a multi-year build placing Nepal on the global robotics map.</p>
+                            <div class="proj-wide-specs">
+                                <span class="proj-spec-pill">3D-Printed Chassis</span>
+                                <span class="proj-spec-pill">Custom Servo Motors</span>
+                                <span class="proj-spec-pill">ROS</span>
+                                <span class="proj-spec-pill">Nepali Voice AI</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="proj-wide-divider"></div>
+                    <!-- AI Wheeled half -->
+                    <div class="proj-wide-half">
+                        <div class="proj-wide-img-wrap">
+                            <img class="proj-wide-img" src="https://images.unsplash.com/photo-1677442135703-1787eea5ce01?auto=format&fit=crop&w=800&q=80" alt="AI Wheeled Robot">
+                        </div>
+                        <div class="proj-wide-body">
+                            <div class="proj-sub-tag">AI · Computer Vision · Edge</div>
+                            <h4>AI-Powered Wheeled Robot</h4>
+                            <p>Advanced autonomous mobile robot on NVIDIA Jetson Nano — YOLOv8 object detection, OpenAI VLM for scene understanding, Whisper for Nepali &amp; English voice commands, DeepFace for visitor recognition, and ultrasonic obstacle avoidance. Fully engineered in Nepal.</p>
+                            <div class="proj-wide-specs">
+                                <span class="proj-spec-pill">NVIDIA Jetson Nano</span>
+                                <span class="proj-spec-pill">YOLOv8</span>
+                                <span class="proj-spec-pill">OpenAI VLM</span>
+                                <span class="proj-spec-pill">Whisper · DeepFace</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="proj-footer" style="justify-content:space-between;">
+                    <span><i class="fas fa-circle-dot"></i> Both platforms in active development</span>
+                    <span style="font-size:0.78rem;color:var(--text-3);">HTP Robotics Lab &middot; Kathmandu</span>
+                </div>
+            </div>
 
-        if (!isDeleting && j <= currentText.length) {
-            typewriterElement.textContent = currentText.slice(0, j);
-            j++;
-            setTimeout(type, speed);
-        } else if (isDeleting && j >= 0) {
-            typewriterElement.textContent = currentText.slice(0, j);
-            j--;
-            setTimeout(type, speed / 2);
-        } else {
-            isDeleting = !isDeleting;
-            if (!isDeleting) i++;
-            setTimeout(type, 1000);
-    }
-    }
+            <!-- Smart Mirror -->
+            <div class="proj-card" data-aos="fade-up" data-aos-delay="0">
+                <img class="proj-img" src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=800&q=80" alt="Smart Mirror">
+                <div class="proj-body">
+                    <div class="proj-tag">Smart Home &middot; IoT &middot; AI</div>
+                    <h3>Smart Mirror</h3>
+                    <p>An intelligent interactive mirror displaying real-time news, weather, time, calendar, and AI-powered personal dashboards. Integrates voice control and facial recognition for a personalized smart home experience — built for Nepal's growing smart home market.</p>
+                </div>
+                <div class="proj-footer"><i class="fas fa-circle-dot"></i> In Development</div>
+            </div>
 
-    type();
-</script>
+            <!-- Supercomputer -->
+            <div class="proj-card" data-aos="fade-up" data-aos-delay="100">
+                <img class="proj-img" src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=800&q=80" alt="Nepal's First Supercomputer">
+                <div class="proj-body">
+                    <div class="proj-tag">HPC &middot; Computing &middot; Infrastructure</div>
+                    <h3>Nepal's First Supercomputer</h3>
+                    <p>First demonstrated May 17, 2006 — Nepal's first operational supercomputer: a 16-node cluster running OpenMosix and Oscar on open-source OS. A national milestone for high-performance computing, AI training, and research infrastructure in Nepal.</p>
+                </div>
+                <div class="proj-footer"><i class="fas fa-check-circle"></i> Operational Since 2006</div>
+            </div>
+
+            <!-- Computer Manufacturing -->
+            <div class="proj-card" data-aos="fade-up" data-aos-delay="200">
+                <img class="proj-img" src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80" alt="Computer Manufacturing">
+                <div class="proj-body">
+                    <div class="proj-tag">Manufacturing &middot; Hardware &middot; Heritage</div>
+                    <h3>Nepal's First Computer Manufacturer</h3>
+                    <p>Founded Nepal's first domestic computer hardware manufacturing company with its own dedicated power plant — producing locally-made computer cards and accessories to reduce import dependency and build true technology sovereignty.</p>
+                </div>
+                <div class="proj-footer"><i class="fas fa-check-circle"></i> Industry Pioneer Since 1984</div>
+            </div>
+
+            <!-- Devanagari AI -->
+            <div class="proj-card" data-aos="fade-up" data-aos-delay="0">
+                <img class="proj-img" src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=800&q=80" alt="Devanagari AI and NLP">
+                <div class="proj-body">
+                    <div class="proj-tag">NLP &middot; OCR &middot; AI &middot; Language</div>
+                    <h3>Devanagari AI &amp; NLP</h3>
+                    <p>From the first Nepali-script display on a computer in 1983 to modern deep learning — HTP builds OCR engines, Nepali voice recognition, handwritten document digitization, and Devanagari-first language models for Nepali and Indic languages.</p>
+                </div>
+                <div class="proj-footer"><i class="fas fa-check-circle"></i> Pioneered Since 1983</div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     FEATURED: AI WHEELED ROBOT
+═══════════════════════════════════════ -->
+<section class="section featured-section" id="robot-detail">
+    <div class="container">
+        <div class="grid-2">
+            <div data-aos="fade-right">
+                <span class="label"><i class="fas fa-robot"></i> Featured Project</span>
+                <h2 class="sec-title">AI-Powered Wheeled Robot</h2>
+                <p class="sec-desc">Our latest robotics platform combines edge AI, computer vision, voice recognition, and face tracking into a fully autonomous mobile robot — engineered entirely in Nepal.</p>
+                <p style="color:var(--text-2);margin-top:1rem;font-size:0.9rem;line-height:1.8;">
+                    The robot uses NVIDIA Jetson Nano as its edge computing brain, handling all on-device AI inference including real-time object detection with YOLO, scene description with OpenAI's Vision Language Model, voice understanding with Whisper, and face recognition with DeepFace — all running together in real time.
+                </p>
+                <div class="specs-grid">
+                    <div class="spec-card">
+                        <div class="spec-icon">🤖</div>
+                        <h4>Edge Computing</h4>
+                        <p>NVIDIA Jetson Nano handles all on-device inference, config updates, and model management</p>
+                    </div>
+                    <div class="spec-card">
+                        <div class="spec-icon">👁️</div>
+                        <h4>YOLO Detection</h4>
+                        <p>Latest YOLO model for real-time object detection and environment mapping</p>
+                    </div>
+                    <div class="spec-card">
+                        <div class="spec-icon">🧠</div>
+                        <h4>OpenAI VLM</h4>
+                        <p>Vision Language Model for rich scene description and contextual environment understanding</p>
+                    </div>
+                    <div class="spec-card">
+                        <div class="spec-icon">🎤</div>
+                        <h4>Whisper ASR</h4>
+                        <p>OpenAI Whisper for multilingual speech recognition including Nepali voice commands</p>
+                    </div>
+                    <div class="spec-card">
+                        <div class="spec-icon">👤</div>
+                        <h4>DeepFace Tracking</h4>
+                        <p>Real-time face recognition and identity tracking via integrated camera system</p>
+                    </div>
+                    <div class="spec-card">
+                        <div class="spec-icon">📡</div>
+                        <h4>Ultrasonic Safety</h4>
+                        <p>Multi-angle proximity detection with automatic motor limits for safe obstacle avoidance</p>
+                    </div>
+                </div>
+            </div>
+            <div data-aos="fade-left">
+                <div class="feat-img-wrap">
+                    <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=800&q=80" alt="AI Wheeled Robot — High Tech Pioneer Nepal">
+                    <div class="feat-badge">
+                        <span>NEW</span> &nbsp;·&nbsp; Jetson Nano &nbsp;·&nbsp; YOLO + OpenAI + DeepFace
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     TECHNOLOGY STACK
+═══════════════════════════════════════ -->
+<section class="section tech-section" id="technology">
+    <div class="container">
+        <div style="text-align:center;max-width:600px;margin:0 auto;" data-aos="fade-up">
+            <span class="label"><i class="fas fa-layer-group"></i> Tech Stack</span>
+            <h2 class="sec-title">Technologies We Use</h2>
+            <p class="sec-desc" style="margin:0 auto;">Our projects are built on cutting-edge hardware and software platforms — from embedded AI to cloud APIs and high-performance computing.</p>
+        </div>
+        <div class="tech-grid">
+            <div class="tech-card" data-aos="fade-up" data-aos-delay="0">
+                <i class="fas fa-microchip"></i>
+                <h4>NVIDIA Jetson Nano</h4>
+                <p>Edge AI computing platform for real-time robot inference, object detection, and sensor fusion</p>
+            </div>
+            <div class="tech-card" data-aos="fade-up" data-aos-delay="70">
+                <i class="fas fa-eye"></i>
+                <h4>YOLO (Latest)</h4>
+                <p>State-of-the-art real-time object detection for environment understanding and navigation</p>
+            </div>
+            <div class="tech-card" data-aos="fade-up" data-aos-delay="140">
+                <i class="fas fa-brain"></i>
+                <h4>OpenAI VLM</h4>
+                <p>Vision Language Model for rich scene description, object recognition, and contextual reasoning</p>
+            </div>
+            <div class="tech-card" data-aos="fade-up" data-aos-delay="210">
+                <i class="fas fa-microphone"></i>
+                <h4>OpenAI Whisper</h4>
+                <p>Multilingual automatic speech recognition supporting Nepali and other languages</p>
+            </div>
+            <div class="tech-card" data-aos="fade-up" data-aos-delay="0">
+                <i class="fas fa-user-check"></i>
+                <h4>DeepFace</h4>
+                <p>Deep learning face recognition and identity tracking for robot-human interaction</p>
+            </div>
+            <div class="tech-card" data-aos="fade-up" data-aos-delay="70">
+                <i class="fas fa-camera"></i>
+                <h4>Computer Vision</h4>
+                <p>Camera-based real-time visual processing integrated with YOLO and VLM pipelines</p>
+            </div>
+            <div class="tech-card" data-aos="fade-up" data-aos-delay="140">
+                <i class="fab fa-python"></i>
+                <h4>Python / Django</h4>
+                <p>Core language for robot control systems, AI pipelines, and web application backends</p>
+            </div>
+            <div class="tech-card" data-aos="fade-up" data-aos-delay="210">
+                <i class="fas fa-satellite-dish"></i>
+                <h4>Satellite &amp; Wireless</h4>
+                <p>Connectivity infrastructure for remote and rural Nepal, bridging the digital divide</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     MILESTONES TIMELINE
+═══════════════════════════════════════ -->
+<section class="section timeline-section" id="milestones">
+    <div class="container">
+        <div data-aos="fade-up">
+            <span class="label"><i class="fas fa-clock-rotate-left"></i> Our History</span>
+            <h2 class="sec-title">40+ Years of Pioneering</h2>
+            <p class="sec-desc">From displaying the first Nepali text on a computer to building humanoid robots — every decade marks a new frontier in Nepal's technological history.</p>
+        </div>
+        <div class="timeline">
+            <div class="tl-item" data-aos="fade-up">
+                <div class="tl-year">1983</div>
+                <h3>First Devanagari Computing in Nepal</h3>
+                <p>Muni Bahadur Sakya demonstrated the first-ever Nepali-language display on a CP/M-based microcomputer, showing the National Anthem in Devanagari script. A historic moment that opened the door to Nepali computing. Awarded the Science Award in December 1983 for this achievement.</p>
+            </div>
+            <div class="tl-item" data-aos="fade-up">
+                <div class="tl-year">1984 – 1985</div>
+                <h3>High Tech Pioneer Founded</h3>
+                <p>Established High Tech Pioneer Pvt. Ltd. at Dillibazar, Kathmandu — Nepal's first commercial computer hardware company. Began manufacturing computer components and accessories, laying the foundation for Nepal's domestic technology industry.</p>
+            </div>
+            <div class="tl-item" data-aos="fade-up">
+                <div class="tl-year">1995</div>
+                <h3>Sun Moon Computer Industry — Nepal's First Computer Manufacturer</h3>
+                <p>Opened Sun Moon Computer Industry, Nepal's first company for manufacturing computer cards commercially. Took hardware production to a fully commercial scale, reducing Nepal's dependency on imported computer components.</p>
+            </div>
+            <div class="tl-item" data-aos="fade-up">
+                <div class="tl-year">2005</div>
+                <h3>RONAST Award for Science &amp; Technology</h3>
+                <p>Received the prestigious Royal Nepal Academy of Science &amp; Technology (RONAST) award for outstanding and sustained contributions to science and technology development in Nepal.</p>
+            </div>
+            <div class="tl-item" data-aos="fade-up">
+                <div class="tl-year">May 17, 2006</div>
+                <h3>Nepal's First Supercomputer Demonstrated</h3>
+                <p>For the first time in Nepal, a supercomputer with 16 nodes was publicly demonstrated. The system ran on open-source OS with OpenMosix and Oscar, using sixteen computers in a cluster configuration — a national milestone for high-performance computing in Nepal.</p>
+            </div>
+            <div class="tl-item" data-aos="fade-up">
+                <div class="tl-year">2016</div>
+                <h3>ICT Pioneer Award</h3>
+                <p>Muni Bahadur Sakya received the ICT Pioneer Award in recognition of his lifetime contributions to Nepal's information and communications technology sector and his role in shaping the nation's digital landscape.</p>
+            </div>
+            <div class="tl-item" data-aos="fade-up">
+                <div class="tl-year">2020s – Present</div>
+                <h3>Robotics, AI &amp; The Next Era</h3>
+                <p>Now actively building InMoov humanoid robots, AI-powered wheeled robots (Jetson Nano + YOLO + OpenAI VLM + Whisper + DeepFace), Smart Mirror systems, and advanced Devanagari NLP tools. High Tech Pioneer is leading Nepal's entry into the global AI and robotics age.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     VIDEO
+═══════════════════════════════════════ -->
+<section class="section video-section">
+    <div class="container">
+        <div style="text-align:center;max-width:650px;margin:0 auto;" data-aos="fade-up">
+            <span class="label"><i class="fas fa-play-circle"></i> Watch</span>
+            <h2 class="sec-title">Robotics in Action</h2>
+            <p class="sec-desc" style="margin:0 auto;">
+                The InMoov is the world's first open-source, 3D-printed, life-size humanoid robot. High Tech Pioneer Nepal is building its own version with custom modifications — featuring modified motors, a custom gear system, and Nepali language AI integration.
+            </p>
+        </div>
+        <div class="video-wrap" data-aos="fade-up">
+            <!-- Replace the video ID below with your own footage when ready -->
+            <iframe
+                src="https://www.youtube.com/embed/fn3KWM1kuAs"
+                title="Robotics Demo — High Tech Pioneer Nepal"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+            </iframe>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     TEAM
+═══════════════════════════════════════ -->
+<section class="section team-section" id="founder">
+    <div class="container">
+        <div style="text-align:center;max-width:650px;margin:0 auto 3rem;" data-aos="fade-up">
+            <span class="label"><i class="fas fa-users"></i> The People</span>
+            <h2 class="sec-title">Meet Our Team</h2>
+            <p class="sec-desc" style="margin:0 auto;">The minds behind Nepal's most ambitious technology projects — from 40+ years of computing history to tomorrow's humanoid robots.</p>
+        </div>
+
+        <!-- Featured: Founder -->
+        <div class="founder-featured" data-aos="fade-up" onclick="openProfile('muni')" title="View Full Profile">
+            <div class="ff-img">
+                <!-- Replace with actual photo of Muni Bahadur Sakya -->
+                <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=700&q=80" alt="Muni Bahadur Sakya — Founder">
+                <div class="ff-img-overlay"></div>
+                <span class="ff-badge">Founder</span>
+            </div>
+            <div class="ff-body">
+                <div class="ff-role">Founder &amp; CEO &nbsp;·&nbsp; Nepal's First Computer Scientist</div>
+                <h3>Muni Bahadur Sakya</h3>
+                <p class="ff-sub"><i class="fas fa-map-marker-alt" style="color:var(--accent);margin-right:0.4rem;"></i>Patan, Kathmandu · Est. 1984</p>
+                <p>Born in 1942 in Patan, Muni Bahadur Sakya is credited with bringing computing to Nepal. In 1983, he made history by displaying the Nepali language on a computer for the very first time. Over four decades he founded Nepal's first hardware companies, operated the nation's first supercomputer, and today leads the charge into robotics, AI, and Devanagari language computing.</p>
+                <div class="ff-awards">
+                    <div class="ff-award"><i class="fas fa-trophy"></i> Science Award 1983 — First Nepali-language computing demonstration</div>
+                    <div class="ff-award"><i class="fas fa-trophy"></i> RONAST Award 2005 — Royal Nepal Academy of Science &amp; Technology</div>
+                    <div class="ff-award"><i class="fas fa-trophy"></i> ICT Pioneer Award 2016 — Lifetime contributions to Nepal's ICT sector</div>
+                    <div class="ff-award"><i class="fas fa-check-circle"></i> Nepal's First Supercomputer (2006) · First Computer Manufacturer (1984)</div>
+                </div>
+                <div class="ff-links">
+                    <a href="https://www.linkedin.com/in/muni-sakya-6a530574/" target="_blank" class="tc-link" title="LinkedIn" onclick="event.stopPropagation()"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://en.wikipedia.org/wiki/Muni_Sakya" target="_blank" class="tc-link" title="Wikipedia" onclick="event.stopPropagation()"><i class="fab fa-wikipedia-w"></i></a>
+                    <a href="https://hightechpioneer.com.np" target="_blank" class="tc-link" title="Website" onclick="event.stopPropagation()"><i class="fas fa-globe"></i></a>
+                    <button class="tc-profile-btn" style="width:auto;" onclick="event.stopPropagation();openProfile('muni')"><i class="fas fa-id-card"></i> Full Profile</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Team Grid -->
+        <div class="team-grid">
+
+            <!-- Ram Kumar Tamang -->
+            <div class="team-card" data-aos="fade-up" data-aos-delay="0">
+                <div class="tc-img">
+                    <!-- Replace with actual photo of Ram Kumar Tamang -->
+                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=600&q=80" alt="Ram Kumar Tamang">
+                    <div class="tc-img-overlay"></div>
+                    <div class="tc-status"></div>
+                </div>
+                <div class="tc-body">
+                    <div class="tc-role">Software Lead · Backend Engineer</div>
+                    <h3>Ram Kumar Tamang</h3>
+                    <p class="tc-location"><i class="fas fa-map-marker-alt"></i> Kathmandu, Nepal</p>
+                    <p class="tc-bio">Django &amp; DRF specialist with 3+ years building production-grade systems. Currently at NAXA Pvt. Ltd. developing national weather forecast and flood early-warning platforms. Software Lead on the InMoov Humanoid Robot project at High Tech Pioneer.</p>
+                    <div class="tc-skills">
+                        <span class="skill-chip">Python</span>
+                        <span class="skill-chip">Django</span>
+                        <span class="skill-chip">FastAPI</span>
+                        <span class="skill-chip">PostgreSQL</span>
+                        <span class="skill-chip">Docker</span>
+                        <span class="skill-chip">AWS</span>
+                        <span class="skill-chip">AI/ML</span>
+                    </div>
+                    <div class="tc-links">
+                        <a href="https://github.com/Ramtamang-2058" target="_blank" class="tc-link" title="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="https://linkedin.com/in/ram-tamang-a73241198" target="_blank" class="tc-link" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://ram-tamang.com.np" target="_blank" class="tc-link" title="Portfolio"><i class="fas fa-globe"></i></a>
+                        <a href="mailto:ram@tamang.dev" class="tc-link" title="Email"><i class="fas fa-envelope"></i></a>
+                    </div>
+                    <button class="tc-profile-btn" onclick="openProfile('ram')"><i class="fas fa-id-card"></i> View Full Profile</button>
+                </div>
+            </div>
+
+            <!-- Subash Sigdel -->
+            <div class="team-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="tc-img">
+                    <!-- Replace with actual photo of Subash Sigdel -->
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80" alt="Subash Sigdel">
+                    <div class="tc-img-overlay"></div>
+                    <div class="tc-status"></div>
+                </div>
+                <div class="tc-body">
+                    <div class="tc-role">Researcher · Robotics &amp; AI</div>
+                    <h3>Subash Sigdel</h3>
+                    <p class="tc-location"><i class="fas fa-map-marker-alt"></i> Kathmandu, Nepal</p>
+                    <p class="tc-bio">Researcher specializing in Reinforcement Learning and Computer Vision. Investigating how Vision Language Models can be anchored in physical action for spatial intelligence. Research Assistant at A² Lab, NAAMII. InMoov Robot researcher integrating VLMs for semantic environment understanding.</p>
+                    <div class="tc-skills">
+                        <span class="skill-chip">Reinforcement Learning</span>
+                        <span class="skill-chip">Computer Vision</span>
+                        <span class="skill-chip">VLMs</span>
+                        <span class="skill-chip">ROS</span>
+                        <span class="skill-chip">Python</span>
+                        <span class="skill-chip">3D Printing</span>
+                    </div>
+                    <div class="tc-links">
+                        <a href="https://github.com/subashsigdel" target="_blank" class="tc-link" title="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="https://www.linkedin.com/in/subash5/" target="_blank" class="tc-link" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://scholar.google.com/citations?user=rph8zrYAAAAJ&hl=en" target="_blank" class="tc-link" title="Google Scholar"><i class="fas fa-graduation-cap"></i></a>
+                        <a href="https://subashsigdel.com.np" target="_blank" class="tc-link" title="Portfolio"><i class="fas fa-globe"></i></a>
+                    </div>
+                    <button class="tc-profile-btn" onclick="openProfile('subash')"><i class="fas fa-id-card"></i> View Full Profile</button>
+                </div>
+            </div>
+
+            <!-- Akash Tamang -->
+            <div class="team-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="tc-img">
+                    <!-- Replace with actual photo of Akash Tamang -->
+                    <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=600&q=80" alt="Akash Tamang">
+                    <div class="tc-img-overlay"></div>
+                    <div class="tc-status"></div>
+                </div>
+                <div class="tc-body">
+                    <div class="tc-role">Lab Assistant</div>
+                    <h3>Akash Tamang</h3>
+                    <p class="tc-location"><i class="fas fa-map-marker-alt"></i> Kathmandu, Nepal</p>
+                    <p class="tc-bio">Lab assistant and support engineer at the High Tech Pioneer research lab. Provides hands-on assistance with hardware assembly, robot calibration, sensor testing, and day-to-day lab operations across the InMoov robot and wheeled AI robot projects.</p>
+                    <div class="tc-skills">
+                        <span class="skill-chip">Hardware</span>
+                        <span class="skill-chip">Electronics</span>
+                        <span class="skill-chip">Assembly</span>
+                        <span class="skill-chip">Sensors</span>
+                        <span class="skill-chip">Lab Ops</span>
+                    </div>
+                    <div class="tc-links">
+                        <a href="#contact" class="tc-link" title="Contact"><i class="fas fa-envelope"></i></a>
+                    </div>
+                    <button class="tc-profile-btn" onclick="openProfile('akash')"><i class="fas fa-id-card"></i> View Full Profile</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     TEAM PROFILE MODALS
+═══════════════════════════════════════ -->
+
+<!-- Modal: Muni Bahadur Sakya -->
+<div class="profile-modal" id="profileMuni">
+    <div class="profile-modal-inner">
+        <button class="profile-modal-close" onclick="closeProfile('muni')">×</button>
+        <div class="pm-hero">
+            <div class="pm-img">
+                <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=700&q=80" alt="Muni Bahadur Sakya">
+                <div class="pm-img-overlay"></div>
+            </div>
+            <div class="pm-header">
+                <span class="pm-badge">Founder &amp; CEO</span>
+                <div class="pm-role">Nepal's First Computer Scientist · Robotics Pioneer</div>
+                <h2>Muni Bahadur Sakya</h2>
+                <p class="pm-location"><i class="fas fa-map-marker-alt" style="color:var(--accent);"></i>&nbsp; Patan, Kathmandu · Est. 1984</p>
+            </div>
+        </div>
+        <div class="pm-body">
+            <div class="pm-section">
+                <div class="pm-section-label">Biography</div>
+                <p class="pm-bio">
+                    Born in 1942 in Patan, Lalitpur, Muni Bahadur Sakya is the founding father of computing in Nepal. In December 1983, he made history by displaying the Nepali language on a CP/M microcomputer for the very first time — receiving the Science Award for this groundbreaking achievement. He went on to found High Tech Pioneer Pvt. Ltd. in 1984, Nepal's first commercial computer hardware company, and Sun Moon Computer Industry in 1995, Nepal's first computer manufacturer.
+                </p>
+                <p class="pm-bio" style="margin-top:1.2rem;">
+                    In 2006, he publicly demonstrated Nepal's first supercomputer — a 16-node cluster running on open-source OS — a national milestone. Today he leads High Tech Pioneer's charge into humanoid robotics, AI, and Devanagari language computing, placing Nepal firmly on the global technology map.
+                </p>
+            </div>
+            <div class="pm-section">
+                <div class="pm-section-label">Awards &amp; Honours</div>
+                <div class="pm-awards">
+                    <div class="pm-award"><i class="fas fa-trophy"></i> Science Award (1983) — First demonstration of Nepali-language computing on a microcomputer</div>
+                    <div class="pm-award"><i class="fas fa-trophy"></i> RONAST Award (2005) — Royal Nepal Academy of Science &amp; Technology, for sustained contributions</div>
+                    <div class="pm-award"><i class="fas fa-trophy"></i> ICT Pioneer Award (2016) — Lifetime contribution to Nepal's ICT sector</div>
+                    <div class="pm-award"><i class="fas fa-star"></i> Nepal's First Supercomputer (2006) · Nepal's First Computer Manufacturer (1984–1995)</div>
+                    <div class="pm-award"><i class="fas fa-star"></i> Wikipedia page dedicated to his contributions: Muni Sakya</div>
+                </div>
+            </div>
+            <div class="pm-section">
+                <div class="pm-section-label">Expertise</div>
+                <div class="pm-skills">
+                    <span class="pm-skill">Computer Science</span>
+                    <span class="pm-skill">Hardware Engineering</span>
+                    <span class="pm-skill">Devanagari Computing</span>
+                    <span class="pm-skill">Supercomputing</span>
+                    <span class="pm-skill">Robotics</span>
+                    <span class="pm-skill">AI Systems</span>
+                    <span class="pm-skill">Technology Strategy</span>
+                    <span class="pm-skill">Nepal ICT Policy</span>
+                </div>
+            </div>
+            <div class="pm-section">
+                <div class="pm-section-label">Connect</div>
+                <div class="pm-links">
+                    <a href="https://www.linkedin.com/in/muni-sakya-6a530574/" target="_blank" class="pm-link pm-link-primary"><i class="fab fa-linkedin-in"></i> LinkedIn</a>
+                    <a href="https://en.wikipedia.org/wiki/Muni_Sakya" target="_blank" class="pm-link"><i class="fab fa-wikipedia-w"></i> Wikipedia</a>
+                    <a href="https://hightechpioneer.com.np" target="_blank" class="pm-link"><i class="fas fa-globe"></i> Website</a>
+                    <a href="https://www.facebook.com/p/High-Tech-Pioneer-pLtd-100064077781458/" target="_blank" class="pm-link"><i class="fab fa-facebook-f"></i> Facebook</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal: Ram Kumar Tamang -->
+<div class="profile-modal" id="profileRam">
+    <div class="profile-modal-inner">
+        <button class="profile-modal-close" onclick="closeProfile('ram')">×</button>
+        <div class="pm-hero">
+            <div class="pm-img">
+                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=700&q=80" alt="Ram Kumar Tamang">
+                <div class="pm-img-overlay"></div>
+            </div>
+            <div class="pm-header">
+                <span class="pm-badge">Software Lead</span>
+                <div class="pm-role">Backend Engineer · InMoov Robot Software</div>
+                <h2>Ram Kumar Tamang</h2>
+                <p class="pm-location"><i class="fas fa-map-marker-alt" style="color:var(--accent);"></i>&nbsp; Kathmandu, Nepal</p>
+            </div>
+        </div>
+        <div class="pm-body">
+            <div class="pm-section">
+                <div class="pm-section-label">Biography</div>
+                <p class="pm-bio">
+                    Ram Kumar Tamang is a backend software engineer with 3+ years of experience building production-grade systems using Python, Django, and FastAPI. He currently works at NAXA Pvt. Ltd., where he develops national weather forecast and flood early-warning platforms — systems that serve Nepal's disaster management infrastructure.
+                </p>
+                <p class="pm-bio" style="margin-top:1.2rem;">
+                    At High Tech Pioneer Nepal, Ram serves as the Software Lead on the InMoov Humanoid Robot project. He is responsible for the robot's software architecture — integrating OpenAI Whisper for Nepali voice recognition, DeepFace for facial identification, YOLOv8 for object detection, and building the overall control pipeline on the NVIDIA Jetson platform. His work bridges the gap between enterprise backend development and embedded AI systems.
+                </p>
+            </div>
+            <div class="pm-section">
+                <div class="pm-section-label">Current Work</div>
+                <div class="pm-awards">
+                    <div class="pm-award"><i class="fas fa-code"></i> Backend Engineer, NAXA Pvt. Ltd. — Weather Forecast &amp; Flood Early Warning Systems</div>
+                    <div class="pm-award"><i class="fas fa-robot"></i> Software Lead, High Tech Pioneer — InMoov Humanoid Robot &amp; AI Wheeled Robot</div>
+                    <div class="pm-award"><i class="fas fa-microchip"></i> Embedded AI integration: Jetson Nano, YOLOv8, Whisper, DeepFace, VLM</div>
+                </div>
+            </div>
+            <div class="pm-section">
+                <div class="pm-section-label">Technical Skills</div>
+                <div class="pm-skills">
+                    <span class="pm-skill">Python</span>
+                    <span class="pm-skill">Django</span>
+                    <span class="pm-skill">Django REST Framework</span>
+                    <span class="pm-skill">FastAPI</span>
+                    <span class="pm-skill">PostgreSQL</span>
+                    <span class="pm-skill">Docker</span>
+                    <span class="pm-skill">AWS</span>
+                    <span class="pm-skill">Celery</span>
+                    <span class="pm-skill">Redis</span>
+                    <span class="pm-skill">NVIDIA Jetson</span>
+                    <span class="pm-skill">YOLOv8</span>
+                    <span class="pm-skill">OpenAI APIs</span>
+                    <span class="pm-skill">ROS</span>
+                    <span class="pm-skill">Git</span>
+                </div>
+            </div>
+            <div class="pm-section">
+                <div class="pm-section-label">Connect</div>
+                <div class="pm-links">
+                    <a href="https://ram-tamang.com.np" target="_blank" class="pm-link pm-link-primary"><i class="fas fa-globe"></i> Portfolio</a>
+                    <a href="https://github.com/Ramtamang-2058" target="_blank" class="pm-link"><i class="fab fa-github"></i> GitHub</a>
+                    <a href="https://linkedin.com/in/ram-tamang-a73241198" target="_blank" class="pm-link"><i class="fab fa-linkedin-in"></i> LinkedIn</a>
+                    <a href="mailto:ram@tamang.dev" class="pm-link"><i class="fas fa-envelope"></i> Email</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal: Subash Sigdel -->
+<div class="profile-modal" id="profileSubash">
+    <div class="profile-modal-inner">
+        <button class="profile-modal-close" onclick="closeProfile('subash')">×</button>
+        <div class="pm-hero">
+            <div class="pm-img">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=700&q=80" alt="Subash Sigdel">
+                <div class="pm-img-overlay"></div>
+            </div>
+            <div class="pm-header">
+                <span class="pm-badge">Researcher</span>
+                <div class="pm-role">Robotics &amp; AI Researcher · NAAMII</div>
+                <h2>Subash Sigdel</h2>
+                <p class="pm-location"><i class="fas fa-map-marker-alt" style="color:var(--accent);"></i>&nbsp; Kathmandu, Nepal</p>
+            </div>
+        </div>
+        <div class="pm-body">
+            <div class="pm-section">
+                <div class="pm-section-label">Biography</div>
+                <p class="pm-bio">
+                    Subash Sigdel is a robotics and AI researcher specializing in Reinforcement Learning and Computer Vision. His primary research investigates how Vision Language Models (VLMs) can be grounded in physical action — a key open problem in embodied AI and spatial intelligence. He is a Research Assistant at the A² Lab at NAAMII (Nepal Applied Mathematics and Informatics Institute for Research).
+                </p>
+                <p class="pm-bio" style="margin-top:1.2rem;">
+                    At High Tech Pioneer Nepal, Subash leads AI research for the InMoov Humanoid Robot project — specifically integrating VLMs for semantic environment understanding, so the robot can reason about its surroundings rather than just detecting objects. He also contributes to the 3D printing pipeline and mechanical assembly process.
+                </p>
+            </div>
+            <div class="pm-section">
+                <div class="pm-section-label">Research Focus</div>
+                <div class="pm-awards">
+                    <div class="pm-award"><i class="fas fa-brain"></i> Grounding Vision Language Models in physical robot actions for spatial reasoning</div>
+                    <div class="pm-award"><i class="fas fa-robot"></i> Reinforcement Learning for real-world robot control — beyond simulation</div>
+                    <div class="pm-award"><i class="fas fa-eye"></i> Computer Vision for semantic scene understanding in unstructured environments</div>
+                    <div class="pm-award"><i class="fas fa-cube"></i> InMoov Robot: VLM integration for environment comprehension and contextual response</div>
+                </div>
+            </div>
+            <div class="pm-section">
+                <div class="pm-section-label">Technical Skills</div>
+                <div class="pm-skills">
+                    <span class="pm-skill">Reinforcement Learning</span>
+                    <span class="pm-skill">Computer Vision</span>
+                    <span class="pm-skill">Vision Language Models</span>
+                    <span class="pm-skill">ROS</span>
+                    <span class="pm-skill">Python</span>
+                    <span class="pm-skill">PyTorch</span>
+                    <span class="pm-skill">3D Printing</span>
+                    <span class="pm-skill">Robot Kinematics</span>
+                    <span class="pm-skill">OpenAI APIs</span>
+                    <span class="pm-skill">Embodied AI</span>
+                </div>
+            </div>
+            <div class="pm-section">
+                <div class="pm-section-label">Connect</div>
+                <div class="pm-links">
+                    <a href="https://subashsigdel.com.np" target="_blank" class="pm-link pm-link-primary"><i class="fas fa-globe"></i> Portfolio</a>
+                    <a href="https://github.com/subashsigdel" target="_blank" class="pm-link"><i class="fab fa-github"></i> GitHub</a>
+                    <a href="https://www.linkedin.com/in/subash5/" target="_blank" class="pm-link"><i class="fab fa-linkedin-in"></i> LinkedIn</a>
+                    <a href="https://scholar.google.com/citations?user=rph8zrYAAAAJ&hl=en" target="_blank" class="pm-link"><i class="fas fa-graduation-cap"></i> Google Scholar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal: Akash Tamang -->
+<div class="profile-modal" id="profileAkash">
+    <div class="profile-modal-inner">
+        <button class="profile-modal-close" onclick="closeProfile('akash')">×</button>
+        <div class="pm-hero">
+            <div class="pm-img">
+                <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=700&q=80" alt="Akash Tamang">
+                <div class="pm-img-overlay"></div>
+            </div>
+            <div class="pm-header">
+                <span class="pm-badge">Lab Engineer</span>
+                <div class="pm-role">Hardware &amp; Assembly · Lab Operations</div>
+                <h2>Akash Tamang</h2>
+                <p class="pm-location"><i class="fas fa-map-marker-alt" style="color:var(--accent);"></i>&nbsp; Kathmandu, Nepal</p>
+            </div>
+        </div>
+        <div class="pm-body">
+            <div class="pm-section">
+                <div class="pm-section-label">Biography</div>
+                <p class="pm-bio">
+                    Akash Tamang is a hands-on lab engineer and hardware specialist at the High Tech Pioneer research laboratory. He is the operational backbone of the lab — providing critical support across all active hardware projects through assembly, calibration, testing, and maintenance.
+                </p>
+                <p class="pm-bio" style="margin-top:1.2rem;">
+                    His work on the InMoov Humanoid Robot project includes physical assembly of 3D-printed components, servo motor wiring, calibration of degrees of freedom across the arm and hand assemblies, and sensor integration testing. On the AI Wheeled Robot, he handles ultrasonic sensor mounting, chassis assembly, power system setup, and hardware troubleshooting.
+                </p>
+            </div>
+            <div class="pm-section">
+                <div class="pm-section-label">Responsibilities</div>
+                <div class="pm-awards">
+                    <div class="pm-award"><i class="fas fa-wrench"></i> InMoov Robot: 3D part assembly, servo wiring, motor calibration, joint range testing</div>
+                    <div class="pm-award"><i class="fas fa-microchip"></i> AI Wheeled Robot: chassis build, sensor mounting, power system setup</div>
+                    <div class="pm-award"><i class="fas fa-flask"></i> Lab operations: equipment maintenance, inventory, workspace management</div>
+                    <div class="pm-award"><i class="fas fa-tools"></i> Prototype testing support and hardware debugging across all projects</div>
+                </div>
+            </div>
+            <div class="pm-section">
+                <div class="pm-section-label">Skills</div>
+                <div class="pm-skills">
+                    <span class="pm-skill">Hardware Assembly</span>
+                    <span class="pm-skill">Electronics</span>
+                    <span class="pm-skill">Servo Systems</span>
+                    <span class="pm-skill">3D Printing</span>
+                    <span class="pm-skill">Sensor Integration</span>
+                    <span class="pm-skill">Lab Operations</span>
+                    <span class="pm-skill">Prototyping</span>
+                    <span class="pm-skill">Troubleshooting</span>
+                </div>
+            </div>
+            <div class="pm-section">
+                <div class="pm-section-label">Connect</div>
+                <div class="pm-links">
+                    <a href="#contact" class="pm-link pm-link-primary"><i class="fas fa-envelope"></i> Contact via HTP</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     RESEARCH & PUBLICATIONS
+═══════════════════════════════════════ -->
+<section class="section research-section" id="research">
+    <div class="container">
+        <div style="text-align:center;max-width:650px;margin:0 auto;" data-aos="fade-up">
+            <span class="label"><i class="fas fa-file-lines"></i> Research</span>
+            <h2 class="sec-title">Publications &amp; Research</h2>
+            <p class="sec-desc" style="margin:0 auto;">Original research from High Tech Pioneer Nepal — covering robotics, AI, Devanagari NLP, and computing. View papers in-browser or download PDFs directly.</p>
+        </div>
+        <div class="research-grid">
+            {% if research %}
+                {% for pub in research %}
+                <div class="res-card" data-aos="fade-up">
+                    <span class="res-cat"><i class="fas fa-tag"></i> {{ pub.get_category_display }}</span>
+                    <h3>{{ pub.title }}</h3>
+                    <p class="res-authors"><i class="fas fa-users" style="margin-right:0.4rem;font-size:0.75rem;"></i>{{ pub.authors }}</p>
+                    <p class="res-abstract">{{ pub.abstract }}</p>
+                    {% if pub.get_tags_list %}
+                    <div class="res-tags">
+                        {% for tag in pub.get_tags_list %}
+                        <span class="res-tag">{{ tag }}</span>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                    <p class="res-meta"><i class="fas fa-calendar" style="margin-right:0.4rem;"></i>{{ pub.published_date|date:"F Y" }}</p>
+                    <div class="res-actions">
+                        {% if pub.pdf_file %}
+                        <button class="res-btn res-btn-primary" onclick="openPDF('{{ pub.pdf_file.url }}', '{{ pub.title|escapejs }}')">
+                            <i class="fas fa-eye"></i> View PDF
+                        </button>
+                        <a href="{{ pub.pdf_file.url }}" download class="res-btn res-btn-outline">
+                            <i class="fas fa-download"></i> Download
+                        </a>
+                        {% elif pub.external_url %}
+                        <a href="{{ pub.external_url }}" target="_blank" class="res-btn res-btn-primary">
+                            <i class="fas fa-external-link-alt"></i> View Paper
+                        </a>
+                        {% endif %}
+                        {% if pub.github_url %}
+                        <a href="{{ pub.github_url }}" target="_blank" class="res-btn res-btn-outline">
+                            <i class="fab fa-github"></i> GitHub
+                        </a>
+                        {% endif %}
+                    </div>
+                </div>
+                {% endfor %}
+            {% else %}
+            <div class="research-empty" data-aos="fade-up">
+                <i class="fas fa-flask"></i>
+                <h3>Research Coming Soon</h3>
+                <p>We are actively working on publications covering humanoid robotics, AI systems, Devanagari NLP, and high-performance computing. Check back soon — or contact us to collaborate.</p>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</section>
+
+<!-- PDF Viewer Modal -->
+<div class="pdf-modal" id="pdfModal">
+    <div class="pdf-modal-inner">
+        <div class="pdf-modal-header">
+            <h4 id="pdfModalTitle">Research Paper</h4>
+            <button class="pdf-modal-close" onclick="closePDF()">×</button>
+        </div>
+        <div class="pdf-modal-body">
+            <iframe id="pdfFrame" src="" title="PDF Viewer"></iframe>
+        </div>
+        <div class="pdf-modal-footer">
+            <a id="pdfDownloadBtn" href="#" download class="res-btn res-btn-primary"><i class="fas fa-download"></i> Download</a>
+            <a id="pdfNewTabBtn" href="#" target="_blank" class="res-btn res-btn-outline"><i class="fas fa-external-link-alt"></i> Open in New Tab</a>
+        </div>
+    </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     CAREERS
+═══════════════════════════════════════ -->
+<section class="section career-section" id="careers">
+    <div class="container">
+        <div style="text-align:center;max-width:700px;margin:0 auto;" data-aos="fade-up">
+            <span class="label"><i class="fas fa-rocket"></i> Join the Mission</span>
+            <h2 class="sec-title">Build the Future With Us</h2>
+            <p class="sec-desc" style="margin:0 auto;">A small, ambitious team building Nepal's most advanced technology — humanoid robots, AI systems, and computing infrastructure since 1984. If you want to work on hard problems that matter, we want to hear from you.</p>
+        </div>
+
+        <div class="career-grid">
+
+            <div class="career-card" data-aos="fade-up" data-aos-delay="0">
+                <div class="career-icon"><i class="fas fa-flask"></i></div>
+                <div class="career-type">Internship &middot; 3–6 Months</div>
+                <h3>Research Intern — Robotics &amp; AI</h3>
+                <p>Work hands-on with the InMoov humanoid robot and AI wheeled robot. Help build and test AI pipelines, integrate new models, contribute to 3D printing and hardware assembly, and co-author real robotics research papers.</p>
+                <div class="career-tags">
+                    <span class="career-tag">Python</span>
+                    <span class="career-tag">ROS</span>
+                    <span class="career-tag">AI/ML</span>
+                    <span class="career-tag">Computer Vision</span>
+                    <span class="career-tag">3D Printing</span>
+                </div>
+                <a href="mailto:info@hightechpioneer.com.np?subject=Research Intern Application" class="career-apply">
+                    <i class="fas fa-paper-plane"></i> Apply via Email
+                </a>
+            </div>
+
+            <div class="career-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="career-icon"><i class="fas fa-code"></i></div>
+                <div class="career-type">Full-Time &middot; Software</div>
+                <h3>Software Engineer — Robotics AI</h3>
+                <p>Own the software stack powering our robots — Django backends, REST APIs, NVIDIA Jetson inference pipelines, YOLOv8 detection, Whisper voice recognition, DeepFace identification, and robot control logic. Fully remote-friendly.</p>
+                <div class="career-tags">
+                    <span class="career-tag">Python</span>
+                    <span class="career-tag">Django</span>
+                    <span class="career-tag">YOLOv8</span>
+                    <span class="career-tag">Jetson Nano</span>
+                    <span class="career-tag">OpenAI APIs</span>
+                </div>
+                <a href="mailto:info@hightechpioneer.com.np?subject=Software Engineer Application" class="career-apply career-apply-primary">
+                    <i class="fas fa-paper-plane"></i> Apply via Email
+                </a>
+            </div>
+
+            <div class="career-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="career-icon"><i class="fas fa-microchip"></i></div>
+                <div class="career-type">Full-Time &middot; Hardware</div>
+                <h3>Hardware &amp; Electronics Engineer</h3>
+                <p>Design and assemble robot hardware — 3D-printed structural components, servo motor systems, PCB design, sensor integration, power management, and chassis calibration for our humanoid and wheeled robot platforms.</p>
+                <div class="career-tags">
+                    <span class="career-tag">Electronics</span>
+                    <span class="career-tag">PCB Design</span>
+                    <span class="career-tag">3D Printing</span>
+                    <span class="career-tag">Servo Systems</span>
+                    <span class="career-tag">Sensors</span>
+                </div>
+                <a href="mailto:info@hightechpioneer.com.np?subject=Hardware Engineer Application" class="career-apply">
+                    <i class="fas fa-paper-plane"></i> Apply via Email
+                </a>
+            </div>
+
+        </div>
+
+        <div class="career-banner" data-aos="fade-up">
+            <div class="career-banner-text">
+                <h3>Open to Research Collaborations</h3>
+                <p>Researchers, academics, and institutions interested in collaborating on robotics, Devanagari NLP, or AI systems — we welcome long-term partnerships. High Tech Pioneer has been Nepal's research partner since 1984. Let's build Nepal's AI future together.</p>
+            </div>
+            <a href="mailto:info@hightechpioneer.com.np?subject=Research Collaboration" class="btn btn-primary"><i class="fas fa-handshake"></i> Let's Collaborate</a>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     CONTACT
+═══════════════════════════════════════ -->
+<section class="section contact-section" id="contact">
+    <div class="container">
+        <div data-aos="fade-up">
+            <span class="label"><i class="fas fa-envelope"></i> Get In Touch</span>
+            <h2 class="sec-title">Contact Us</h2>
+            <p class="sec-desc">Visit us in Kathmandu or reach out — we'd love to collaborate on Nepal's next technological breakthrough.</p>
+        </div>
+        <div class="contact-grid">
+            <div class="contact-list" data-aos="fade-right">
+                <div class="c-item">
+                    <div class="c-icon"><i class="fas fa-map-marker-alt"></i></div>
+                    <div>
+                        <h4>Address</h4>
+                        <p>Dillibazar, Kathmandu<br>Nepal — Central Technology Hub</p>
+                    </div>
+                </div>
+                <div class="c-item">
+                    <div class="c-icon"><i class="fas fa-phone"></i></div>
+                    <div>
+                        <h4>Phone</h4>
+                        <p>
+                            <a href="tel:+97714770284">+977-1-4770284</a><br>
+                            <a href="tel:+97714770472">+977-1-4770472</a>
+                        </p>
+                    </div>
+                </div>
+                <div class="c-item">
+                    <div class="c-icon"><i class="fas fa-mobile-alt"></i></div>
+                    <div>
+                        <h4>Mobile</h4>
+                        <p><a href="tel:+9779864252381">+977-9864252381</a></p>
+                    </div>
+                </div>
+                <div class="c-item">
+                    <div class="c-icon"><i class="fas fa-envelope"></i></div>
+                    <div>
+                        <h4>Email</h4>
+                        <p><a href="mailto:info@hightechpioneer.com.np">info@hightechpioneer.com.np</a></p>
+                    </div>
+                </div>
+                <div class="c-item">
+                    <div class="c-icon"><i class="fas fa-globe"></i></div>
+                    <div>
+                        <h4>Website</h4>
+                        <p><a href="https://hightechpioneer.com.np" target="_blank">hightechpioneer.com.np</a></p>
+                    </div>
+                </div>
+                <div class="c-item">
+                    <div class="c-icon"><i class="fas fa-headset"></i></div>
+                    <div>
+                        <h4>Support</h4>
+                        <p>24/7 Emergency Technical Support Available</p>
+                    </div>
+                </div>
+            </div>
+            <div data-aos="fade-left">
+                <div class="map-wrap">
+                    <iframe
+                        src="https://maps.google.com/maps?q=Dillibazar+Kathmandu+Nepal&t=&z=16&ie=UTF8&iwloc=&output=embed"
+                        style="border:0;"
+                        allowfullscreen=""
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"
+                        title="High Tech Pioneer Nepal Location">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 {% endblock %}

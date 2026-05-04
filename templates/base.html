@@ -4,91 +4,114 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="High Tech Pioneer Nepal — Pioneering robotics, AI, supercomputing, and connectivity in Nepal since 1984. ISO 9001:2015 certified.">
     <title>{% block title %}High Tech Pioneer Nepal | Kathmandu{% endblock %}</title>
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    {% block extra_head %}{% endblock %}
 </head>
 <body>
-    <!-- Header -->
-    <header class="header">
-        <nav class="nav">
-            <a href="#" class="logo">High Tech Pioneer</a>
-            <button class="menu-toggle" onclick="toggleMenu()">MENU</button>
-        </nav>
-    </header>
 
-    <!-- Side Menu -->
-    <div class="side-menu" id="sideMenu">
-        <button class="close-menu" onclick="toggleMenu()">×</button>
-        <ul class="menu-links">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#features">Innovation</a></li>
-            <li><a href="#computer">Satellite Tech</a></li>
-            <li><a href="#connectivity">Connectivity</a></li>
-            <li><a href="#future">Future Tech</a></li>
-            <li><a href="#certifications">Certifications</a></li>
-            <li><a href="#contact">Contact</a></li>
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+    <div class="container">
+        <a href="/" class="brand">
+            <div class="brand-icon">HT</div>
+            <span>High Tech Pioneer</span>
+        </a>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#technology">Technology</a></li>
+            <li><a href="#founder">Team</a></li>
+            <li><a href="#research">Research</a></li>
+            <li><a href="#careers">Careers</a></li>
+            <li><a href="#contact" class="nav-cta">Contact</a></li>
         </ul>
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme"><i class="fas fa-sun" id="themeIcon"></i></button>
+        <button class="hamburger" id="hamburger" aria-label="Open menu">
+            <span></span><span></span><span></span>
+        </button>
     </div>
+</nav>
 
-    <!-- Overlay -->
-    <div class="overlay" id="overlay" onclick="toggleMenu()"></div>
+<!-- MOBILE NAV -->
+<div class="mobile-nav" id="mobileNav">
+    <button class="close-nav" id="closeNav">×</button>
+    <a href="#about">About</a>
+    <a href="#projects">Projects</a>
+    <a href="#technology">Technology</a>
+    <a href="#founder">Team</a>
+    <a href="#research">Research</a>
+    <a href="#careers">Careers</a>
+    <a href="#contact">Contact</a>
+</div>
 
-    <!-- Main Content -->
-    {% block content %}
-    {% endblock %}
+<main>{% block content %}{% endblock %}</main>
 
-    <!-- Certifications Section -->
-    <section class="certifications" id="certifications">
-        <div class="certifications-container">
-            <h2 class="section-title">Our Legacy & Standards</h2>
-            <div class="certifications-grid">
-                <div class="certification-item">
-                    <div class="certification-icon"><i class="fas fa-award"></i></div>
-                    <h3>ISO Certified</h3>
-                    <p>High Tech Pioneer Nepal is proud to be ISO 9001:2015 certified, ensuring top-quality standards in our product and computer solutions.</p>
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <div class="footer-brand-logo">
+                    <div class="brand-icon">HT</div>
+                    <h3>High Tech Pioneer</h3>
                 </div>
-                <div class="certification-item">
-                    <div class="certification-icon"><i class="fas fa-clock"></i></div>
-                    <h3>Decades of Excellence</h3>
-                    <p>With over 20 years of pioneering technology in Nepal, we lead in connecting the nation to the global digital landscape.</p>
+                <p>Pioneering Nepal's digital future through robotics, AI, supercomputing, and satellite connectivity. ISO 9001:2015 certified. Established 1984, Kathmandu, Nepal.</p>
+                <div class="socials">
+                    <a href="https://www.facebook.com/p/High-Tech-Pioneer-pLtd-100064077781458/" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.linkedin.com/in/muni-sakya-6a530574/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://twitter.com" target="_blank" title="Twitter/X"><i class="fab fa-x-twitter"></i></a>
+                    <a href="https://youtube.com" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer" id="contact">
-        <div class="footer-container">
-            <div class="footer-section">
-                <h3>High Tech Pioneer Nepal</h3>
-                <p>Pioneering the future of connectivity in Nepal through advanced computer technology and space-age solutions.</p>
-                <p><i class="fas fa-certificate"></i> ISO 9001:2015 Certified</p>
+            <div class="footer-col">
+                <h4>Projects</h4>
+                <ul>
+                    <li><a href="#projects">InMoov Humanoid Robot</a></li>
+                    <li><a href="#projects">AI Wheeled Robot</a></li>
+                    <li><a href="#projects">Smart Mirror</a></li>
+                    <li><a href="#projects">Supercomputer</a></li>
+                    <li><a href="#projects">Computer Manufacturing</a></li>
+                    <li><a href="#projects">Devanagari AI</a></li>
+                </ul>
             </div>
-            <div class="footer-section">
-                <h3>Location</h3>
-                <p>Kathmandu, Nepal<br>
-                Central Technology Hub<br>
-                Satellite Operations Center</p>
+            <div class="footer-col">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#founder">Our Founder</a></li>
+                    <li><a href="#milestones">History</a></li>
+                    <li><a href="#technology">Technology Stack</a></li>
+                    <li><a href="#contact">Contact Us</a></li>
+                </ul>
             </div>
-            <div class="footer-section">
-                <h3>Contact</h3>
-                <p><i class="fas fa-envelope"></i>info@hightechpioneer.com.np</p>
-                <p><i class="fas fa-phone"></i>+977-9864252381</p>
-                <p><i class="fas fa-headset"></i> Emergency: 24/7 Support</p>
-            </div>
-            <div class="footer-section">
-                <h3>Connect</h3>
-                <p><a href="https://www.linkedin.com" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a></p>
-                <p><a href="https://www.twitter.com" target="_blank"><i class="fab fa-twitter"></i> Twitter</a></p>
-                <p><a href="#" target="_blank"><i class="fas fa-rocket"></i> Mission Control</a></p>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <ul>
+                    <li><a href="tel:+97714770284"><i class="fas fa-phone" style="color:var(--accent);margin-right:0.5rem;font-size:0.8rem;"></i>+977-1-4770284</a></li>
+                    <li><a href="tel:+97714770472"><i class="fas fa-phone" style="color:var(--accent);margin-right:0.5rem;font-size:0.8rem;"></i>+977-1-4770472</a></li>
+                    <li><a href="tel:+9779864252381"><i class="fas fa-mobile-alt" style="color:var(--accent);margin-right:0.5rem;font-size:0.8rem;"></i>+977-9864252381</a></li>
+                    <li><a href="mailto:info@hightechpioneer.com.np"><i class="fas fa-envelope" style="color:var(--accent);margin-right:0.5rem;font-size:0.8rem;"></i>info@hightechpioneer.com.np</a></li>
+                    <li><a href="#contact"><i class="fas fa-map-marker-alt" style="color:var(--accent);margin-right:0.5rem;font-size:0.8rem;"></i>Dillibazar, Kathmandu</a></li>
+                </ul>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>© 2025 High Tech Pioneer Nepal. Connecting the Future.</p>
+            <p>© 2025 High Tech Pioneer Nepal (P) Ltd. All rights reserved.</p>
+            <p>Dillibazar, Kathmandu, Nepal &nbsp;·&nbsp; <a href="https://hightechpioneer.com.np">hightechpioneer.com.np</a></p>
         </div>
-    </footer>
+    </div>
+</footer>
 
-    <script src="{% static 'js/script.js' %}"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="{% static 'js/script.js' %}"></script>
+{% block extra_js %}{% endblock %}
 </body>
 </html>

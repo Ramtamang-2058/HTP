@@ -151,3 +151,31 @@ Object.entries(profileIds).forEach(([key, modalId]) => {
         if (e.target === this) closeProfile(key);
     });
 });
+
+// ─── Video tab switcher ───────────────────
+const videoSources = [
+    '/video/building_base_robot.mov',
+    '/video/handshke_robot.mov'
+];
+
+function switchVideo(index) {
+    const video = document.getElementById('mainVideo');
+    if (!video) return;
+
+    // Update tabs
+    document.querySelectorAll('.video-tab').forEach((tab, i) => {
+        tab.classList.toggle('active', i === index);
+    });
+
+    // Fade out, swap source, fade in
+    video.style.opacity = '0';
+    video.style.transition = 'opacity 0.3s ease';
+
+    setTimeout(() => {
+        video.pause();
+        const source = video.querySelector('source');
+        if (source) source.src = videoSources[index];
+        video.load();
+        video.style.opacity = '1';
+    }, 300);
+}

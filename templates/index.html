@@ -24,6 +24,7 @@
         <div class="hero-actions">
             <a href="#projects" class="btn btn-primary"><i class="fas fa-rocket"></i> Explore Our Projects</a>
             <a href="#about" class="btn btn-outline"><i class="fas fa-circle-info"></i> About Us</a>
+            <a href="https://wa.me/9779864252381" target="_blank" class="btn btn-whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp Us</a>
         </div>
     </div>
     <div class="hero-scroll"><span>Scroll</span><i class="fas fa-chevron-down"></i></div>
@@ -375,31 +376,41 @@
 <!-- ═══════════════════════════════════════
      VIDEO
 ═══════════════════════════════════════ -->
-<section class="section video-section">
-    <div class="container">
-        <div style="text-align:center;max-width:650px;margin:0 auto;" data-aos="fade-up">
+<!-- ═══════════════════════════════════════
+     VIDEO
+═══════════════════════════════════════ -->
+<section class="section video-section" id="videos">
+    <div class="video-section-inner">
+        <!-- Header -->
+        <div class="video-header" data-aos="fade-up">
             <span class="label"><i class="fas fa-play-circle"></i> Watch</span>
             <h2 class="sec-title">Robotics in Action</h2>
-            <p class="sec-desc" style="margin:0 auto;">
-                See our robots come to life — from building the InMoov humanoid to the AI-powered wheeled robot in action. High Tech Pioneer Nepal is pioneering robotics engineering at the heart of Kathmandu.
+            <p class="sec-desc" style="max-width:580px;margin:0 auto;">
+                See Nepal's most advanced robots come to life — raw footage straight from the High Tech Pioneer lab in Kathmandu.
             </p>
         </div>
-        <div class="video-dual-wrap" data-aos="fade-up">
-            <!-- Video 1: Building the Base Robot -->
-            <div class="video-item">
-                <div class="video-label"><i class="fas fa-robot"></i> Building the Robot Base</div>
-                <video controls playsinline preload="auto">
-                    <source src="/video/building_base_robot.mov" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-            </div>
-            <!-- Video 2: Handshake Robot Demo -->
-            <div class="video-item">
-                <div class="video-label"><i class="fas fa-hand-sparkles"></i> Robot Handshake Demo</div>
-                <video controls playsinline preload="auto">
-                    <source src="/video/handshke_robot.mov" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
+
+        <!-- Tab Switcher -->
+        <div class="video-tabs" data-aos="fade-up">
+            <button class="video-tab active" onclick="switchVideo(0)" id="vtab-0">
+                <i class="fas fa-robot"></i>
+                <span>Building the Robot Base</span>
+            </button>
+            <button class="video-tab" onclick="switchVideo(1)" id="vtab-1">
+                <i class="fas fa-hand-sparkles"></i>
+                <span>Robot Handshake Demo</span>
+            </button>
+        </div>
+
+        <!-- Main Video Player -->
+        <div class="video-main-wrap" data-aos="fade-up">
+            <div class="video-glow"></div>
+            <video id="mainVideo" controls playsinline preload="auto" class="video-main-player">
+                <source src="/video/building_base_robot.mov" type="video/mp4">
+                Your browser does not support video playback.
+            </video>
+            <div class="video-meta">
+                <div class="video-meta-tag"><i class="fas fa-circle" style="color:#22c55e;font-size:0.5rem;"></i> Live from HTP Lab · Kathmandu, Nepal</div>
             </div>
         </div>
     </div>
@@ -418,15 +429,17 @@
 
         <!-- Featured: Founder -->
         <div class="founder-featured" data-aos="fade-up" onclick="openProfile('muni')" title="View Full Profile">
-            <div class="ff-img">
-                <img src="{% static 'img/profiles/muni_bahadur_sakya.png' %}" alt="Muni Bahadur Sakya — Founder">
-                <div class="ff-img-overlay"></div>
-                <span class="ff-badge">Founder</span>
+            <div class="ff-portrait">
+                <div class="ff-portrait-ring">
+                    <img src="{% static 'img/profiles/muni_bahadur_sakya.png' %}" alt="Muni Bahadur Sakya — Founder">
+                </div>
+                <span class="ff-badge">Founder &amp; CEO</span>
+                <div class="ff-portrait-glow"></div>
             </div>
             <div class="ff-body">
-                <div class="ff-role">Founder &amp; CEO &nbsp;·&nbsp; Nepal's First Computer Scientist</div>
+                <div class="ff-role">Nepal's First Computer Scientist &nbsp;·&nbsp; Est. 1984</div>
                 <h3>Muni Bahadur Sakya</h3>
-                <p class="ff-sub"><i class="fas fa-map-marker-alt" style="color:var(--accent);margin-right:0.4rem;"></i>Patan, Kathmandu · Est. 1984</p>
+                <p class="ff-sub"><i class="fas fa-map-marker-alt" style="color:var(--accent);margin-right:0.4rem;"></i>Patan, Kathmandu &nbsp;·&nbsp; Born 1942</p>
                 <p>Born in 1942 in Patan, Muni Bahadur Sakya is credited with bringing computing to Nepal. In 1983, he made history by displaying the Nepali language on a computer for the very first time. Over four decades he founded Nepal's first hardware companies, operated the nation's first supercomputer, and today leads the charge into robotics, AI, and Devanagari language computing.</p>
                 <div class="ff-awards">
                     <div class="ff-award"><i class="fas fa-trophy"></i> Science Award 1983 — First Nepali-language computing demonstration</div>
@@ -998,6 +1011,13 @@
                         <p>24/7 Emergency Technical Support Available</p>
                     </div>
                 </div>
+                <div class="c-item">
+                    <div class="c-icon" style="background:rgba(37,211,102,0.1);border-color:rgba(37,211,102,0.25);"><i class="fab fa-whatsapp" style="color:#25d366;"></i></div>
+                    <div>
+                        <h4>WhatsApp</h4>
+                        <p><a href="https://wa.me/9779864252381" target="_blank" style="color:#25d366;">+977-9864252381 — Chat Now</a></p>
+                    </div>
+                </div>
             </div>
             <div data-aos="fade-left">
                 <div class="map-wrap">
@@ -1015,4 +1035,12 @@
     </div>
 </section>
 
+{% endblock %}
+
+<!-- Floating WhatsApp Button -->
+{% block extra_content %}
+<a href="https://wa.me/9779864252381" target="_blank" class="whatsapp-float" title="Chat with us on WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+    <span class="whatsapp-tooltip">Chat with us!</span>
+</a>
 {% endblock %}

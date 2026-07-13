@@ -30,6 +30,7 @@ jobs:
             echo "--- Pulling latest code ---"
             cd "$APP_DIR"
             git pull origin main
+            mkdir -p "$APP_DIR/logs"
 
             echo "--- Activating virtual environment ---"
             source "$VENV_ACTIVATE"

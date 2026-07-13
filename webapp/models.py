@@ -36,3 +36,26 @@ class ResearchPublication(models.Model):
 
     def get_authors_list(self):
         return [a.strip() for a in self.authors.split(',') if a.strip()]
+
+
+class Story(models.Model):
+    title = models.CharField(max_length=100)
+    media_url = models.CharField(max_length=500, help_text="Path to static file (e.g., static/img/robots/robot_after_3d_print.jpeg) or full URL")
+    thumbnail_url = models.CharField(max_length=500, blank=True, help_text="Optional path to static thumbnail. Defaults to media_url if empty.")
+    caption = models.TextField(blank=True, help_text="Optional text caption to show on the story")
+    media_type = models.CharField(max_length=20, choices=[('image', 'Image'), ('video', 'Video')], default='image')
+    order = models.IntegerField(default=0)
+    is_active = models.BooleanField(default=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['order', '-created_at']
+        verbose_name = 'Story'
+        verbose_name_plural = 'Stories'
+
+    def __str__(self):
+        return self.title
+
+    def get_thumbnail(self):
+        return self.thumbnail_url if self.thumbnail_url else self.media_url
+

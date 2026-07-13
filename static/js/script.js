@@ -179,3 +179,197 @@ function switchVideo(index) {
         video.style.opacity = '1';
     }, 300);
 }
+
+// ─── INSTAGRAM STORIES SYSTEM ─────────────
+let currentStoryIndex = 0;
+let storyTimer = null;
+let storyProgressInterval = null;
+let storyDuration = 5000; // 5s default
+let storyStartTime = 0;
+let storyPaused = false;
+let elapsed = 0;
+
+function openStory(index) {
+    if (typeof storiesData === 'undefined' || !storiesData.length) return;
+    currentStoryIndex = index;
+    const modal = document.getElementById('storyModal');
+    if (!modal) return;
+    modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    loadStorySlide(index);
+}
+
+function closeStory() {
+    const modal = document.getElementById('storyModal');
+    if (!modal) return;
+    modal.classList.remove('open');
+    document.body.style.overflow = '';
+    
+    // Pause video if playing
+    const video = document.getElementById('storyModalVideo');
+    if (video) video.pause();
+    
+    clearStoryTimers();
+}
+
+function clearStoryTimers() {
+    if (storyTimer) clearTimeout(storyTimer);
+    if (storyProgressInterval) clearInterval(storyProgressInterval);
+    const progressFill = document.getElementById('storyProgress');
+    if (progressFill) progressFill.style.width = '0%';
+    elapsed = 0;
+    storyPaused = false;
+}
+
+function loadStorySlide(index) {
+    clearStoryTimers();
+    if (index < 0 || index >= storiesData.length) {
+        closeStory();
+        return;
+    }
+    currentStoryIndex = index;
+    const item = storiesData[index];
+    
+    const avatar = document.getElementById('storyModalAvatar');
+    const title = document.getElementById('storyModalTitle');
+    const caption = document.getElementById('storyModalCaption');
+    const img = document.getElementById('storyModalImage');
+    const videoWrap = document.getElementById('storyVideoWrapper');
+    const video = document.getElementById('storyModalVideo');
+    
+    if (avatar) avatar.src = item.thumbnailUrl;
+    if (title) title.textContent = item.title;
+    if (caption) caption.textContent = item.caption;
+    
+    if (item.mediaType === 'video') {
+        img.style.display = 'none';
+        videoWrap.style.display = 'flex';
+        video.src = item.mediaUrl;
+        video.load();
+        
+        video.onloadedmetadata = function() {
+            storyDuration = video.duration * 1000 || 6000;
+            startStoryProgressBar();
+        };
+        video.play().catch(() => {
+            storyDuration = 6000;
+            startStoryProgressBar();
+        });
+        
+        video.onended = function() {
+            nextStory();
+        };
+    } else {
+        videoWrap.style.display = 'none';
+        video.pause();
+        img.style.display = 'block';
+        img.src = item.mediaUrl;
+        storyDuration = 5000; // 5s for images
+        startStoryProgressBar();
+        
+        storyTimer = setTimeout(() => {
+            nextStory();
+        }, storyDuration);
+    }
+}
+
+function startStoryProgressBar() {
+    const progressFill = document.getElementById('storyProgress');
+    if (!progressFill) return;
+    
+    const start = Date.now();
+    storyStartTime = start;
+    
+    storyProgressInterval = setInterval(() => {
+        if (storyPaused) return;
+        const currentElapsed = Date.now() - start - elapsed;
+        const percentage = Math.min((currentElapsed / storyDuration) * 100, 100);
+        progressFill.style.width = percentage + '%';
+        if (percentage >= 100) {
+            clearInterval(storyProgressInterval);
+        }
+    }, 30);
+}
+
+function prevStory() {
+    if (currentStoryIndex > 0) {
+        loadStorySlide(currentStoryIndex - 1);
+    } else {
+        closeStory();
+    }
+}
+
+// Global scope definition so button clicks work
+window.prevStory = prevStory;
+window.nextStory = nextStory;
+window.openStory = openStory;
+window.closeStory = closeStory;
+
+function nextStory() {
+    if (currentStoryIndex < storiesData.length - 1) {
+        loadStorySlide(currentStoryIndex + 1);
+    } else {
+        closeStory();
+    }
+}
+
+// Pause/Play story on tap/hold
+const storyMediaContainer = document.querySelector('.story-media-container');
+if (storyMediaContainer) {
+    storyMediaContainer.addEventListener('mousedown', () => {
+        storyPaused = true;
+        const video = document.getElementById('storyModalVideo');
+        if (video && !video.paused) video.pause();
+    });
+    storyMediaContainer.addEventListener('mouseup', () => {
+        storyPaused = false;
+        const video = document.getElementById('storyModalVideo');
+        if (video && video.paused) video.play().catch(()=>{});
+    });
+    storyMediaContainer.addEventListener('touchstart', () => {
+        storyPaused = true;
+        const video = document.getElementById('storyModalVideo');
+        if (video && !video.paused) video.pause();
+    });
+    storyMediaContainer.addEventListener('touchend', () => {
+        storyPaused = false;
+        const video = document.getElementById('storyModalVideo');
+        if (video && video.paused) video.play().catch(()=>{});
+    });
+}
+
+
+// ─── AUTO-SLIDING LAB PHOTO GALLERY ──────
+let currentSlideIndex = 0;
+let slideInterval = null;
+
+function setSlide(index) {
+    currentSlideIndex = index;
+    const track = document.getElementById('slideshowTrack');
+    if (!track) return;
+    
+    // Move track
+    track.style.transform = `translateX(-${index * 25}%)`;
+    
+    // Update dots
+    document.querySelectorAll('.slide-dot').forEach((dot, i) => {
+        dot.classList.toggle('active', i === index);
+    });
+}
+
+function startSlideshow() {
+    if (slideInterval) clearInterval(slideInterval);
+    slideInterval = setInterval(() => {
+        currentSlideIndex = (currentSlideIndex + 1) % 4;
+        setSlide(currentSlideIndex);
+    }, 4000);
+}
+
+// Expose setSlide globally
+window.setSlide = setSlide;
+
+// Initialize slideshow
+document.addEventListener('DOMContentLoaded', () => {
+    startSlideshow();
+});
+

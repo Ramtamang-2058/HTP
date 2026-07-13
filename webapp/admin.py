@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import ResearchPublication
+from .models import ResearchPublication, Story
 
 
 @admin.register(ResearchPublication)
@@ -20,3 +20,12 @@ class ResearchPublicationAdmin(admin.ModelAdmin):
             'fields': ('is_published',)
         }),
     )
+
+
+@admin.register(Story)
+class StoryAdmin(admin.ModelAdmin):
+    list_display = ('title', 'media_type', 'order', 'is_active', 'created_at')
+    list_filter = ('media_type', 'is_active')
+    search_fields = ('title', 'caption')
+    list_editable = ('order', 'is_active')
+

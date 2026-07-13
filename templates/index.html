@@ -31,6 +31,27 @@
 </section>
 
 <!-- ═══════════════════════════════════════
+     STORIES (Instagram Style)
+═══════════════════════════════════════ -->
+<section class="stories-section">
+    <div class="container">
+        <div class="stories-title">
+            <span class="stories-live"><i class="fas fa-broadcast-tower"></i> Live Lab Stories</span>
+        </div>
+        <div class="stories-wrapper">
+            {% for story in stories %}
+            <div class="story-circle" onclick="openStory({{ forloop.index0 }})" id="story-circle-{{ forloop.index0 }}">
+                <div class="story-avatar">
+                    <img src="{{ story.get_thumbnail }}" alt="{{ story.title }}">
+                </div>
+                <span class="story-label">{{ story.title }}</span>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════
      STATS BAR
 ═══════════════════════════════════════ -->
 <section class="stats-bar">
@@ -374,43 +395,85 @@
 </section>
 
 <!-- ═══════════════════════════════════════
-     VIDEO
-═══════════════════════════════════════ -->
-<!-- ═══════════════════════════════════════
-     VIDEO
+     VIDEO & LAB GALLERY
 ═══════════════════════════════════════ -->
 <section class="section video-section" id="videos">
-    <div class="video-section-inner">
+    <div class="container">
         <!-- Header -->
-        <div class="video-header" data-aos="fade-up">
-            <span class="label"><i class="fas fa-play-circle"></i> Watch</span>
+        <div class="video-header" data-aos="fade-up" style="text-align:center;margin-bottom:4rem;">
+            <span class="label"><i class="fas fa-play-circle"></i> Watch & Explore</span>
             <h2 class="sec-title">Robotics in Action</h2>
-            <p class="sec-desc" style="max-width:580px;margin:0 auto;">
-                See Nepal's most advanced robots come to life — raw footage straight from the High Tech Pioneer lab in Kathmandu.
+            <p class="sec-desc" style="max-width:650px;margin:0 auto;">
+                Raw footage straight from the High Tech Pioneer research lab in Dillibazar, Kathmandu. See the hardware assembly and live calibration.
             </p>
         </div>
 
-        <!-- Tab Switcher -->
-        <div class="video-tabs" data-aos="fade-up">
-            <button class="video-tab active" onclick="switchVideo(0)" id="vtab-0">
-                <i class="fas fa-robot"></i>
-                <span>Building the Robot Base</span>
-            </button>
-            <button class="video-tab" onclick="switchVideo(1)" id="vtab-1">
-                <i class="fas fa-hand-sparkles"></i>
-                <span>Robot Handshake Demo</span>
-            </button>
+        <!-- Side-by-Side Video Players -->
+        <div class="video-side-by-side" data-aos="fade-up" style="margin-bottom: 5rem;">
+            <!-- Left Player (Horizontal 16:9) -->
+            <div class="video-card horizontal-video-card">
+                <div class="video-card-header">
+                    <i class="fas fa-robot"></i> Building the Robot Base (Horizontal)
+                </div>
+                <div class="video-player-container aspect-16-9">
+                    <video controls playsinline preload="auto">
+                        <source src="/video/building_base_robot.mov" type="video/mp4">
+                        Your browser does not support video playback.
+                    </video>
+                </div>
+                <div class="video-card-meta">
+                    <span><i class="fas fa-tools"></i> Base assembly & calibration</span>
+                </div>
+            </div>
+
+            <!-- Right Player (Vertical 9:16) -->
+            <div class="video-card vertical-video-card">
+                <div class="video-card-header">
+                    <i class="fas fa-hand-sparkles"></i> Robot Handshake Demo (Vertical Phone View)
+                </div>
+                <div class="video-player-container aspect-9-16">
+                    <video controls playsinline preload="auto">
+                        <source src="/video/handshke_robot.mov" type="video/mp4">
+                        Your browser does not support video playback.
+                    </video>
+                </div>
+                <div class="video-card-meta">
+                    <span><i class="fas fa-signal"></i> Humanoid interaction test</span>
+                </div>
+            </div>
         </div>
 
-        <!-- Main Video Player -->
-        <div class="video-main-wrap" data-aos="fade-up">
-            <div class="video-glow"></div>
-            <video id="mainVideo" controls playsinline preload="auto" class="video-main-player">
-                <source src="/video/building_base_robot.mov" type="video/mp4">
-                Your browser does not support video playback.
-            </video>
-            <div class="video-meta">
-                <div class="video-meta-tag"><i class="fas fa-circle" style="color:#22c55e;font-size:0.5rem;"></i> Live from HTP Lab · Kathmandu, Nepal</div>
+        <!-- Auto-Sliding Lab Photo Slideshow -->
+        <div class="lab-slideshow-container" data-aos="fade-up">
+            <div class="slideshow-header">
+                <i class="fas fa-images"></i> Inside the HTP Robotics Lab
+            </div>
+            <div class="slideshow-wrapper">
+                <div class="slideshow-slides" id="slideshowTrack">
+                    <div class="slide">
+                        <img src="{% static 'img/robots/assembling_after_print_upper_body.jpeg' %}" alt="HTP Humanoid Assembly">
+                        <div class="slide-caption">Assembling upper body parts after 3D printing</div>
+                    </div>
+                    <div class="slide">
+                        <img src="{% static 'img/robots/robot_after_3d_print.jpeg' %}" alt="Chassis Setup">
+                        <div class="slide-caption">Complete humanoid chassis ready for servo integration</div>
+                    </div>
+                    <div class="slide">
+                        <img src="{% static 'img/robots/robots_hand_assembling.png' %}" alt="Hand degrees of freedom">
+                        <div class="slide-caption">Calibrating mechanical hand degrees of freedom</div>
+                    </div>
+                    <div class="slide">
+                        <img src="{% static 'img/robots/left_hand_break.png' %}" alt="Robotics calibration">
+                        <div class="slide-caption">Calibration and testing of robotic arm joints</div>
+                    </div>
+                </div>
+            </div>
+            <!-- Slideshow controls -->
+            <div class="slideshow-controls">
+                <button class="slide-dot active" onclick="setSlide(0)"></button>
+                <button class="slide-dot" onclick="setSlide(1)"></button>
+                <button class="slide-dot" onclick="setSlide(2)"></button>
+                <button class="slide-dot" onclick="setSlide(3)"></button>
             </div>
         </div>
     </div>
@@ -1043,4 +1106,46 @@
     <i class="fab fa-whatsapp"></i>
     <span class="whatsapp-tooltip">Chat with us!</span>
 </a>
+
+<!-- Instagram Stories Modal -->
+<div class="story-modal" id="storyModal">
+    <div class="story-modal-close" onclick="closeStory()">×</div>
+    <div class="story-modal-content">
+        <div class="story-progress-bar">
+            <div class="story-progress-fill" id="storyProgress"></div>
+        </div>
+        <div class="story-modal-header">
+            <div class="story-modal-avatar">
+                <img id="storyModalAvatar" src="" alt="">
+            </div>
+            <span id="storyModalTitle" class="story-modal-user"></span>
+            <span class="story-modal-time">Live</span>
+        </div>
+        <div class="story-media-container">
+            <img id="storyModalImage" src="" style="display:none;" alt="">
+            <div id="storyVideoWrapper" style="display:none;width:100%;height:100%;background:#000;display:flex;align-items:center;justify-content:center;">
+                <video id="storyModalVideo" src="" playsinline preload="auto" style="width:100%;height:100%;max-height:80vh;object-fit:contain;"></video>
+            </div>
+        </div>
+        <div class="story-caption" id="storyModalCaption"></div>
+        <button class="story-nav-btn prev" onclick="prevStory()">‹</button>
+        <button class="story-nav-btn next" onclick="nextStory()">›</button>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    const storiesData = [
+        {% for story in stories %}
+        {
+            title: "{{ story.title|escapejs }}",
+            mediaUrl: "{% if story.media_url|slice:':1' == '/' or story.media_url|slice:':4' == 'http' %}{{ story.media_url|escapejs }}{% else %}/static/{{ story.media_url|escapejs }}{% endif %}",
+            mediaType: "{{ story.media_type|escapejs }}",
+            thumbnailUrl: "{% if story.get_thumbnail|slice:':1' == '/' or story.get_thumbnail|slice:':4' == 'http' %}{{ story.get_thumbnail|escapejs }}{% else %}/static/{{ story.get_thumbnail|escapejs }}{% endif %}",
+            caption: "{{ story.caption|escapejs }}"
+        }{% if not forloop.last %},{% endif %}
+        {% endfor %}
+    ];
+</script>
 {% endblock %}

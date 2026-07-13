@@ -381,18 +381,28 @@
             <span class="label"><i class="fas fa-play-circle"></i> Watch</span>
             <h2 class="sec-title">Robotics in Action</h2>
             <p class="sec-desc" style="margin:0 auto;">
-                The InMoov is the world's first open-source, 3D-printed, life-size humanoid robot. High Tech Pioneer Nepal is building its own version with custom modifications — featuring modified motors, a custom gear system, and Nepali language AI integration.
+                See our robots come to life — from building the InMoov humanoid to the AI-powered wheeled robot in action. High Tech Pioneer Nepal is pioneering robotics engineering at the heart of Kathmandu.
             </p>
         </div>
-        <div class="video-wrap" data-aos="fade-up">
-            <!-- Replace the video ID below with your own footage when ready -->
-            <iframe
-                src="https://www.youtube.com/embed/fn3KWM1kuAs"
-                title="Robotics Demo — High Tech Pioneer Nepal"
-                frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen>
-            </iframe>
+        <div class="video-dual-wrap" data-aos="fade-up">
+            <!-- Video 1: Building the Base Robot -->
+            <div class="video-item">
+                <div class="video-label"><i class="fas fa-robot"></i> Building the Robot Base</div>
+                <video controls playsinline preload="metadata" poster="">
+                    <source src="{% static 'videos/building_base_robot.mov' %}" type="video/mp4">
+                    <source src="{% static 'videos/building_base_robot.mov' %}" type="video/quicktime">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            <!-- Video 2: Handshake Robot Demo -->
+            <div class="video-item">
+                <div class="video-label"><i class="fas fa-hand-sparkles"></i> Robot Handshake Demo</div>
+                <video controls playsinline preload="metadata" poster="">
+                    <source src="{% static 'videos/handshke_robot.mov' %}" type="video/mp4">
+                    <source src="{% static 'videos/handshke_robot.mov' %}" type="video/quicktime">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
         </div>
     </div>
 </section>
@@ -411,8 +421,7 @@
         <!-- Featured: Founder -->
         <div class="founder-featured" data-aos="fade-up" onclick="openProfile('muni')" title="View Full Profile">
             <div class="ff-img">
-                <!-- Replace with actual photo of Muni Bahadur Sakya -->
-                <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=700&q=80" alt="Muni Bahadur Sakya — Founder">
+                <img src="{% static 'img/profiles/muni_bahadur_sakya.png' %}" alt="Muni Bahadur Sakya — Founder">
                 <div class="ff-img-overlay"></div>
                 <span class="ff-badge">Founder</span>
             </div>
@@ -430,7 +439,7 @@
                 <div class="ff-links">
                     <a href="https://www.linkedin.com/in/muni-sakya-6a530574/" target="_blank" class="tc-link" title="LinkedIn" onclick="event.stopPropagation()"><i class="fab fa-linkedin-in"></i></a>
                     <a href="https://en.wikipedia.org/wiki/Muni_Sakya" target="_blank" class="tc-link" title="Wikipedia" onclick="event.stopPropagation()"><i class="fab fa-wikipedia-w"></i></a>
-                    <a href="https://hightechpioneer.com.np" target="_blank" class="tc-link" title="Website" onclick="event.stopPropagation()"><i class="fas fa-globe"></i></a>
+                    <a href="https://hightechpioneer.com.np/#founder" target="_blank" class="tc-link" title="Website" onclick="event.stopPropagation()"><i class="fas fa-globe"></i></a>
                     <button class="tc-profile-btn" style="width:auto;" onclick="event.stopPropagation();openProfile('muni')"><i class="fas fa-id-card"></i> Full Profile</button>
                 </div>
             </div>
@@ -442,8 +451,7 @@
             <!-- Ram Kumar Tamang -->
             <div class="team-card" data-aos="fade-up" data-aos-delay="0">
                 <div class="tc-img">
-                    <!-- Replace with actual photo of Ram Kumar Tamang -->
-                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=600&q=80" alt="Ram Kumar Tamang">
+                    <img src="{% static 'img/profiles/ram_tamang.jpeg' %}" alt="Ram Kumar Tamang">
                     <div class="tc-img-overlay"></div>
                     <div class="tc-status"></div>
                 </div>
@@ -474,8 +482,7 @@
             <!-- Subash Sigdel -->
             <div class="team-card" data-aos="fade-up" data-aos-delay="100">
                 <div class="tc-img">
-                    <!-- Replace with actual photo of Subash Sigdel -->
-                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80" alt="Subash Sigdel">
+                    <img src="{% static 'img/profiles/subash_sigdel.png' %}" alt="Subash Sigdel">
                     <div class="tc-img-overlay"></div>
                     <div class="tc-status"></div>
                 </div>
@@ -505,8 +512,7 @@
             <!-- Akash Tamang -->
             <div class="team-card" data-aos="fade-up" data-aos-delay="200">
                 <div class="tc-img">
-                    <!-- Replace with actual photo of Akash Tamang -->
-                    <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=600&q=80" alt="Akash Tamang">
+                    <img src="{% static 'img/profiles/bikash_tamang.png' %}" alt="Akash Tamang">
                     <div class="tc-img-overlay"></div>
                     <div class="tc-status"></div>
                 </div>
@@ -543,7 +549,7 @@
         <button class="profile-modal-close" onclick="closeProfile('muni')">×</button>
         <div class="pm-hero">
             <div class="pm-img">
-                <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=700&q=80" alt="Muni Bahadur Sakya">
+                <img src="{% static 'img/profiles/muni_bahadur_sakya.png' %}" alt="Muni Bahadur Sakya">
                 <div class="pm-img-overlay"></div>
             </div>
             <div class="pm-header">
@@ -591,7 +597,7 @@
                 <div class="pm-links">
                     <a href="https://www.linkedin.com/in/muni-sakya-6a530574/" target="_blank" class="pm-link pm-link-primary"><i class="fab fa-linkedin-in"></i> LinkedIn</a>
                     <a href="https://en.wikipedia.org/wiki/Muni_Sakya" target="_blank" class="pm-link"><i class="fab fa-wikipedia-w"></i> Wikipedia</a>
-                    <a href="https://hightechpioneer.com.np" target="_blank" class="pm-link"><i class="fas fa-globe"></i> Website</a>
+                    <a href="https://hightechpioneer.com.np/#founder" target="_blank" class="pm-link"><i class="fas fa-globe"></i> Website</a>
                     <a href="https://www.facebook.com/p/High-Tech-Pioneer-pLtd-100064077781458/" target="_blank" class="pm-link"><i class="fab fa-facebook-f"></i> Facebook</a>
                 </div>
             </div>
@@ -605,7 +611,7 @@
         <button class="profile-modal-close" onclick="closeProfile('ram')">×</button>
         <div class="pm-hero">
             <div class="pm-img">
-                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=700&q=80" alt="Ram Kumar Tamang">
+                <img src="{% static 'img/profiles/ram_tamang.jpeg' %}" alt="Ram Kumar Tamang">
                 <div class="pm-img-overlay"></div>
             </div>
             <div class="pm-header">
@@ -671,7 +677,7 @@
         <button class="profile-modal-close" onclick="closeProfile('subash')">×</button>
         <div class="pm-hero">
             <div class="pm-img">
-                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=700&q=80" alt="Subash Sigdel">
+                <img src="{% static 'img/profiles/subash_sigdel.png' %}" alt="Subash Sigdel">
                 <div class="pm-img-overlay"></div>
             </div>
             <div class="pm-header">
@@ -734,7 +740,7 @@
         <button class="profile-modal-close" onclick="closeProfile('akash')">×</button>
         <div class="pm-hero">
             <div class="pm-img">
-                <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=700&q=80" alt="Akash Tamang">
+                <img src="{% static 'img/profiles/bikash_tamang.png' %}" alt="Akash Tamang">
                 <div class="pm-img-overlay"></div>
             </div>
             <div class="pm-header">
@@ -984,7 +990,7 @@
                     <div class="c-icon"><i class="fas fa-globe"></i></div>
                     <div>
                         <h4>Website</h4>
-                        <p><a href="https://hightechpioneer.com.np" target="_blank">hightechpioneer.com.np</a></p>
+                        <p><a href="https://hightechpioneer.com.np/#founder" target="_blank">hightechpioneer.com.np</a></p>
                     </div>
                 </div>
                 <div class="c-item">

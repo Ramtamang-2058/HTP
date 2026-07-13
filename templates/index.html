@@ -1140,9 +1140,9 @@
         {% for story in stories %}
         {
             title: "{{ story.title|escapejs }}",
-            mediaUrl: "{% if story.media_url|slice:':1' == '/' or story.media_url|slice:':4' == 'http' %}{{ story.media_url|escapejs }}{% else %}/static/{{ story.media_url|escapejs }}{% endif %}",
+            mediaUrl: "{{ story.media_url|escapejs }}",
             mediaType: "{{ story.media_type|escapejs }}",
-            thumbnailUrl: "{% if story.get_thumbnail|slice:':1' == '/' or story.get_thumbnail|slice:':4' == 'http' %}{{ story.get_thumbnail|escapejs }}{% else %}/static/{{ story.get_thumbnail|escapejs }}{% endif %}",
+            thumbnailUrl: "{{ story.get_thumbnail|escapejs }}",
             caption: "{{ story.caption|escapejs }}"
         }{% if not forloop.last %},{% endif %}
         {% endfor %}

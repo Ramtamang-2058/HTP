@@ -1,0 +1,11 @@
+# MIME types for video files so browsers can play them
+AddType video/mp4 .mov .mp4
+AddType video/quicktime .mov
+
+# Allow cross-origin for video streaming
+<IfModule mod_headers.c>
+    <FilesMatch "\.(mov|mp4|webm)$">
+        Header set Accept-Ranges bytes
+        Header set Cache-Control "public, max-age=86400"
+    </FilesMatch>
+</IfModule>

@@ -190,7 +190,12 @@ let storyPaused = false;
 let elapsed = 0;
 
 function openStory(index) {
-    if (typeof storiesData === 'undefined' || !storiesData.length) return;
+    if (typeof storiesData === 'undefined' || !Array.isArray(storiesData) || !storiesData.length) return;
+    
+    // Parse index strictly
+    index = parseInt(index, 10);
+    if (isNaN(index)) return;
+
     currentStoryIndex = index;
     const modal = document.getElementById('storyModal');
     if (!modal) return;
@@ -223,12 +228,19 @@ function clearStoryTimers() {
 
 function loadStorySlide(index) {
     clearStoryTimers();
-    if (index < 0 || index >= storiesData.length) {
+    
+    index = parseInt(index, 10);
+    if (isNaN(index) || index < 0 || index >= storiesData.length) {
         closeStory();
         return;
     }
+    
     currentStoryIndex = index;
     const item = storiesData[index];
+    if (!item) {
+        closeStory();
+        return;
+    }
     
     const avatar = document.getElementById('storyModalAvatar');
     const title = document.getElementById('storyModalTitle');
@@ -237,9 +249,9 @@ function loadStorySlide(index) {
     const videoWrap = document.getElementById('storyVideoWrapper');
     const video = document.getElementById('storyModalVideo');
     
-    if (avatar) avatar.src = item.thumbnailUrl;
-    if (title) title.textContent = item.title;
-    if (caption) caption.textContent = item.caption;
+    if (avatar) avatar.src = item.thumbnailUrl || '';
+    if (title) title.textContent = item.title || '';
+    if (caption) caption.textContent = item.caption || '';
     
     if (item.mediaType === 'video') {
         img.style.display = 'none';
@@ -372,4 +384,3 @@ window.setSlide = setSlide;
 document.addEventListener('DOMContentLoaded', () => {
     startSlideshow();
 });
-

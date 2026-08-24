@@ -2,7 +2,7 @@ import os
 import re
 
 from django.conf import settings
-from django.http import StreamingHttpResponse, Http404
+from django.http import HttpResponse, StreamingHttpResponse, Http404
 from django.shortcuts import render
 
 from .models import ResearchPublication, Story, Milestone, TeamMember
@@ -37,6 +37,15 @@ def research(request):
 
 def contact(request):
     return render(request, 'contact.html')
+
+
+def robots(request):
+    lines = ['User-agent: *', 'Disallow: /admin/', '', f'Sitemap: https://hightechpioneer.com.np/sitemap.xml']
+    return HttpResponse('\n'.join(lines), content_type='text/plain')
+
+
+def handler404(request, exception=None):
+    return render(request, '404.html', status=404)
 
 
 CONTENT_TYPES = {

@@ -29,6 +29,21 @@ class PageSmokeTests(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, 'Dillibazar')
 
+    def test_robots_txt(self):
+        response = self.client.get('/robots.txt')
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, 'Sitemap:')
+
+    def test_sitemap_xml(self):
+        response = self.client.get('/sitemap.xml')
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, '<urlset')
+
+    def test_404_page_is_custom(self):
+        response = self.client.get('/this/page/does/not/exist/')
+        self.assertEqual(response.status_code, 404)
+        self.assertContains(response, 'That page', status_code=404)
+
 
 @override_settings(SECURE_SSL_REDIRECT=False)
 class VideoEndpointTests(TestCase):

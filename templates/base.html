@@ -8,6 +8,15 @@
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
     <link rel="icon" type="image/png" href="{% static 'img/favicon_64.png' %}">
     {% block canonical %}{% endblock %}
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="High Tech Pioneer Nepal">
+    <meta property="og:title" content="{% block og_title %}High Tech Pioneer Nepal — Pioneering technology since 1984{% endblock %}">
+    <meta property="og:description" content="{% block og_description %}Nepal's first commercial computer hardware company — first Devanagari computer (1983), first supercomputer (2006). Robotics and AI in Kathmandu today.{% endblock %}">
+    <meta property="og:url" content="https://hightechpioneer.com.np">
+    <meta property="og:image" content="{% block og_image %}https://hightechpioneer.com.np/static/img/opt/muni_sakya_portrait_900.jpg{% endblock %}">
+    <meta property="og:image:width" content="900">
+    <meta property="og:image:height" content="600">
+    <meta name="twitter:card" content="summary_large_image">
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",

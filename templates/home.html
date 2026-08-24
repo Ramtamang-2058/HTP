@@ -2,6 +2,7 @@
 {% load static %}
 
 {% block title %}High Tech Pioneer Nepal — Pioneering technology since 1984{% endblock %}
+{% block og_image %}https://hightechpioneer.com.np/static/img/opt/founder_with_supercomputer_1400.jpg{% endblock %}
 
 {% block content %}
 
@@ -106,7 +107,9 @@
             <h2>Live from Dillibazar.</h2>
         </header>
         {% if stories %}
-        <div class="stories" data-stories>
+        <div class="stories-wrap">
+            <button class="stories-arrow" type="button" data-scroll="-1" aria-label="Scroll stories back">&#8592;</button>
+            <div class="stories" data-stories>
             {% for story in stories %}
             <figure class="story">
                 {% if story.media_type == 'video' %}
@@ -129,6 +132,8 @@
                 </figcaption>
             </figure>
             {% endfor %}
+            </div>
+            <button class="stories-arrow" type="button" data-scroll="1" aria-label="Scroll stories forward">&#8594;</button>
         </div>
         <p class="stories-hint">Videos open directly from the lab archive — assembly and handshake tests.</p>
         {% endif %}

@@ -25,6 +25,17 @@
         });
     }
 
+    /* Stories scroller arrows (desktop) */
+    document.querySelectorAll('.stories-arrow').forEach(function (button) {
+        var strip = document.querySelector('[data-stories]');
+        if (!strip) return;
+        button.addEventListener('click', function () {
+            var card = strip.querySelector('.story');
+            var step = card ? card.getBoundingClientRect().width + 20 : 320;
+            strip.scrollBy({ left: step * Number(button.dataset.scroll), behavior: 'smooth' });
+        });
+    });
+
     /* Lazy video loading: only fetch the .mov when a visitor chooses to play. */
     document.querySelectorAll('.story-media[data-video]').forEach(function (link) {
         link.addEventListener('click', function (event) {

@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Research — High Tech Pioneer Nepal{% endblock %}
+{% block description %}Publications from the High Tech Pioneer team — robotics, computer vision and machine learning research conducted in Kathmandu.{% endblock %}
+
+{% block content %}
+
+<section class="page-head">
+    <div class="shell">
+        <p class="kicker">Research</p>
+        <h1>What we publish.</h1>
+        <p class="lede">
+            Selected papers and notes by our team members. We only list work with a
+            public, verifiable record — conference proceedings or openly accessible documents.
+        </p>
+    </div>
+</section>
+
+<section class="section">
+    <div class="shell">
+        {% if publications %}
+        <ul class="pub-list pub-list-full">
+            {% for pub in publications %}
+            <li class="pub">
+                <p class="pub-venue">{{ pub.venue|default:'Preprint' }} · {{ pub.published_date.year }}</p>
+                <h2 class="pub-title">
+                    {% if pub.external_url %}<a href="{{ pub.external_url }}" rel="noopener">{{ pub.title }}</a>
+                    {% elif pub.pdf_file %}<a href="{{ pub.pdf_file.url }}">{{ pub.title }}</a>
+                    {% else %}{{ pub.title }}{% endif %}
+                </h2>
+                <p class="pub-authors">{{ pub.authors }}</p>
+                {% if pub.abstract %}<p class="pub-abstract">{{ pub.abstract }}</p>{% endif %}
+                {% if pub.tags %}
+                <p class="pub-tags">{% for tag in pub.get_tags_list %}<span>{{ tag }}</span>{% endfor %}</p>
+                {% endif %}
+            </li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        <p>Publications are being catalogued — please check back soon.</p>
+        {% endif %}
+
+        <aside class="collab-note">
+            <h2>Collaboration</h2>
+            <p>
+                We collaborate with universities and research institutes on robotics,
+                computer vision and Devanagari language technology. If you are working on
+                embodied AI for low-resource languages, write to
+                <a href="mailto:info@hightechpioneer.com.np">info@hightechpioneer.com.np</a>.
+            </p>
+        </aside>
+    </div>
+</section>
+
+{% endblock %}

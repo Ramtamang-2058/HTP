@@ -1,0 +1,136 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}History &amp; People — High Tech Pioneer Nepal{% endblock %}
+{% block description %}Four decades of Nepali computing history: from Nepal's first microcomputer (1979) and the first Devanagari computer (1983) to Nepal's first supercomputer (2006) — and the people behind it.{% endblock %}
+
+{% block content %}
+
+<section class="page-head">
+    <div class="shell">
+        <p class="kicker">About</p>
+        <h1>Forty years of building<br>in Kathmandu.</h1>
+    </div>
+</section>
+
+<section class="section">
+    <div class="shell founder-grid">
+        <figure class="founder-figure">
+            <img src="{% static 'img/opt/founder_with_supercomputer_1400.jpg' %}"
+                 width="1400" height="933" loading="lazy"
+                 alt="Muni Bahadur Sakya standing beside Nepal's first supercomputer">
+            <figcaption>Muni Bahadur Sakya with the sixteen-node cluster he built — 2006.</figcaption>
+        </figure>
+        <div class="founder-copy">
+            <p class="kicker">The founder</p>
+            <h2>Muni Bahadur Sakya</h2>
+            <p class="lede">
+                Born in Patan in 1942. Radio engineering in Calcutta (1962), computer
+                engineering in England (1970), mainframes in France — then home, to build.
+            </p>
+            <p>
+                He assembled Nepal's first microcomputer in 1979 from parts gathered across
+                three continents. In December 1983 his CP/M machine displayed the national
+                anthem in Devanagari script — the first computer to read Nepali — earning a
+                national Science Award. He founded High Tech Pioneer in 1984, opened Nepal's
+                first computer-card factory in 1995, built a Nepali-speaking robot in 2005 and
+                demonstrated the country's first supercomputer in May 2006.
+            </p>
+            <p>
+                Honoured by RONAST (2005), the CAN Federation ICT Business Excellence Award
+                (2012) and the ICT Pioneer Award (2016). His work is documented by
+                <a href="https://en.wikipedia.org/wiki/Muni_Sakya">Wikipedia</a>,
+                <a href="https://www.recordnepal.com/meet-muni-bahadur-shakya-a-pioneering-nepali-computer-scientist">The&nbsp;Record</a>
+                and <a href="https://www.can.org.np/page/12">CAN&nbsp;Federation</a>.
+            </p>
+        </div>
+    </div>
+</section>
+
+<section class="section section-alt" id="timeline">
+    <div class="shell">
+        <header class="section-head">
+            <p class="kicker">Timeline</p>
+            <h2>Firsts, year by year.</h2>
+        </header>
+        <ol class="timeline">
+            {% for m in milestones %}
+            <li class="milestone">
+                <div class="milestone-year">{{ m.year }}</div>
+                <div class="milestone-body">
+                    <h3>{{ m.title }}</h3>
+                    <p>{{ m.body }}</p>
+                </div>
+            </li>
+            {% endfor %}
+        </ol>
+    </div>
+</section>
+
+<section class="section" id="gallery">
+    <div class="shell">
+        <header class="section-head">
+            <p class="kicker">Archive</p>
+            <h2>Kept working, kept everything.</h2>
+        </header>
+        <div class="archive-grid">
+            <figure>
+                <img src="{% static 'img/opt/supercomputer_1600.jpg' %}" width="1600" height="1067" loading="lazy"
+                     alt="Sixteen-node supercomputer cluster">
+                <figcaption>Nepal's first supercomputer, 2006.</figcaption>
+            </figure>
+            <figure>
+                <img src="{% static 'img/opt/ict_award_2012_1200.jpg' %}" width="1200" height="917" loading="lazy"
+                     alt="Muni Bahadur Sakya receiving the CAN ICT Business Excellence Award">
+                <figcaption>ICT Business Excellence Award, CAN Federation, 2012.</figcaption>
+            </figure>
+            <figure>
+                <img src="{% static 'img/opt/cycle_generator_1400.jpg' %}" width="1400" height="933" loading="lazy"
+                     alt="Bicycle-powered electricity generator invented by Muni Bahadur Sakya">
+                <figcaption>Bicycle generator — one of many side inventions.</figcaption>
+            </figure>
+            <figure>
+                <img src="{% static 'img/opt/office_certificates_1600.jpg' %}" width="1600" height="970" loading="lazy"
+                     alt="Muni Bahadur Sakya's office wall of certificates and awards">
+                <figcaption>The office wall — forty years of certificates.</figcaption>
+            </figure>
+        </div>
+    </div>
+</section>
+
+<section class="section section-alt" id="people">
+    <div class="shell">
+        <header class="section-head">
+            <p class="kicker">People</p>
+            <h2>Who's here now.</h2>
+        </header>
+        <div class="team-grid">
+            {% for person in team %}
+            <article class="team-card">
+                <img src="{{ person.photo }}" loading="lazy" alt="{{ person.name }}, {{ person.role }}">
+                <h3>{{ person.name }}</h3>
+                <p class="team-role">{{ person.role }}</p>
+                <p class="team-bio">{{ person.bio }}</p>
+                {% if person.portfolio_url or person.github_url or person.linkedin_url or person.scholar_url %}
+                <p class="team-links">
+                    {% if person.portfolio_url %}<a href="{{ person.portfolio_url }}">Site</a>{% endif %}
+                    {% if person.github_url %}<a href="{{ person.github_url }}">GitHub</a>{% endif %}
+                    {% if person.linkedin_url %}<a href="{{ person.linkedin_url }}">LinkedIn</a>{% endif %}
+                    {% if person.scholar_url %}<a href="{{ person.scholar_url }}">Scholar</a>{% endif %}
+                </p>
+                {% endif %}
+            </article>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="cta-band">
+    <div class="shell cta-inner">
+        <h2>Visit the lab.</h2>
+        <p>Dillibazar, Kathmandu. Students, engineers and researchers welcome.</p>
+        <a class="button" href="{% url 'contact' %}">Get in touch</a>
+    </div>
+</section>
+
+{% endblock %}

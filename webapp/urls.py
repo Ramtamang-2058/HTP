@@ -1,8 +1,11 @@
 from django.urls import path
+
 from . import views
 
 urlpatterns = [
-    path('', views.index, name='home'),
+    path('', views.home, name='home'),
+    path('about/', views.about, name='about'),
+    path('research/', views.research, name='research'),
+    path('contact/', views.contact, name='contact'),
     path('video/<str:filename>', views.stream_video, name='stream_video'),
 ]
-

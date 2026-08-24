@@ -1,121 +1,106 @@
-{% load static %}
-<!DOCTYPE html>
+{% load static %}<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="High Tech Pioneer Nepal — Pioneering robotics, AI, supercomputing, and connectivity in Nepal since 1984. ISO 9001:2015 certified.">
-    <title>{% block title %}High Tech Pioneer Nepal | Kathmandu{% endblock %}</title>
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}High Tech Pioneer Nepal — Pioneering technology since 1984{% endblock %}</title>
+    <meta name="description" content="{% block description %}High Tech Pioneer (P) Ltd., Kathmandu — Nepal's first commercial computer hardware company, established 1984. Home of the first Devanagari computer and Nepal's first supercomputer. Today: robotics and applied AI.{% endblock %}">
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-    {% block extra_head %}{% endblock %}
+    <link rel="icon" type="image/png" href="{% static 'img/favicon_64.png' %}">
+    {% block canonical %}{% endblock %}
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "High Tech Pioneer Nepal (P) Ltd.",
+      "alternateName": "Hi-Tech Pioneer Pvt. Ltd.",
+      "foundingDate": "1984",
+      "foundingLocation": { "@type": "Place", "name": "Dillibazar, Kathmandu, Nepal" },
+      "url": "https://hightechpioneer.com.np",
+      "logo": "https://hightechpioneer.com.np/static/img/opt/muni_sakya_portrait_900.jpg",
+      "description": "Nepal's first commercial computer hardware company. Demonstrated the first Devanagari-script computer (1983) and Nepal's first supercomputer (2006).",
+      "founder": {
+        "@type": "Person",
+        "name": "Muni Bahadur Sakya",
+        "jobTitle": "Founder & CEO",
+        "birthDate": "1942"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Dillibazar",
+        "addressLocality": "Kathmandu",
+        "addressCountry": "NP"
+      },
+      "telephone": ["+977-1-4770284", "+977-1-4770472"]
+    }
+    </script>
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to content</a>
 
-<!-- NAVBAR -->
-<nav class="navbar" id="navbar">
-    <div class="container">
-        <a href="/" class="brand">
-            <div class="brand-icon">HT</div>
-            <span>High Tech Pioneer</span>
+<header class="site-header">
+    <div class="shell header-row">
+        <a class="brand" href="{% url 'home' %}">
+            <span class="brand-mark" aria-hidden="true">HTP</span>
+            <span class="brand-text">
+                High Tech Pioneer
+                <small>Kathmandu · est.&nbsp;1984</small>
+            </span>
         </a>
-        <ul class="nav-links">
-            <li><a href="#about">About</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#technology">Technology</a></li>
-            <li><a href="#videos">Videos</a></li>
-            <li><a href="#founder">Team</a></li>
-            <li><a href="#research">Research</a></li>
-            <li><a href="#careers">Careers</a></li>
-            <li><a href="#contact" class="nav-cta">Contact</a></li>
-        </ul>
-        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme"><i class="fas fa-sun" id="themeIcon"></i></button>
-        <button class="hamburger" id="hamburger" aria-label="Open menu">
-            <span></span><span></span><span></span>
+        <nav class="site-nav" aria-label="Main">
+            <a href="{% url 'home' %}" {% if request.resolver_match.url_name == 'home' %}aria-current="page"{% endif %}>Home</a>
+            <a href="{% url 'about' %}" {% if request.resolver_match.url_name == 'about' %}aria-current="page"{% endif %}>History &amp; People</a>
+            <a href="{% url 'research' %}" {% if request.resolver_match.url_name == 'research' %}aria-current="page"{% endif %}>Research</a>
+            <a href="{% url 'contact' %}" class="nav-contact">Contact</a>
+        </nav>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="mobile-nav">
+            <span class="nav-toggle-label">Menu</span>
         </button>
     </div>
-</nav>
+</header>
 
-<!-- MOBILE NAV -->
-<div class="mobile-nav" id="mobileNav">
-    <button class="close-nav" id="closeNav">×</button>
-    <a href="#about">About</a>
-    <a href="#projects">Projects</a>
-    <a href="#technology">Technology</a>
-    <a href="#videos">Videos</a>
-    <a href="#founder">Team</a>
-    <a href="#research">Research</a>
-    <a href="#careers">Careers</a>
-    <a href="#contact">Contact</a>
-    <a href="https://wa.me/9779864252381" target="_blank" style="color:#25d366;"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+<div class="mobile-nav" id="mobile-nav" hidden>
+    <a href="{% url 'home' %}">Home</a>
+    <a href="{% url 'about' %}">History &amp; People</a>
+    <a href="{% url 'research' %}">Research</a>
+    <a href="{% url 'contact' %}">Contact</a>
 </div>
 
-<main>{% block content %}{% endblock %}</main>
-{% block extra_content %}{% endblock %}
+<main id="main">
+    {% block content %}{% endblock %}
+</main>
 
-<!-- FOOTER -->
-<footer class="footer">
-    <div class="container">
-        <div class="footer-grid">
-            <div class="footer-brand">
-                <div class="footer-brand-logo">
-                    <div class="brand-icon">HT</div>
-                    <h3>High Tech Pioneer</h3>
-                </div>
-                <p>Pioneering Nepal's digital future through robotics, AI, supercomputing, and satellite connectivity. ISO 9001:2015 certified. Established 1984, Kathmandu, Nepal.</p>
-                <div class="socials">
-                    <a href="https://www.facebook.com/p/High-Tech-Pioneer-pLtd-100064077781458/" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://www.linkedin.com/in/muni-sakya-6a530574/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="https://twitter.com" target="_blank" title="Twitter/X"><i class="fab fa-x-twitter"></i></a>
-                    <a href="https://youtube.com" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
-                </div>
-            </div>
-            <div class="footer-col">
-                <h4>Projects</h4>
-                <ul>
-                    <li><a href="#projects">InMoov Humanoid Robot</a></li>
-                    <li><a href="#projects">AI Wheeled Robot</a></li>
-                    <li><a href="#projects">Smart Mirror</a></li>
-                    <li><a href="#projects">Supercomputer</a></li>
-                    <li><a href="#projects">Computer Manufacturing</a></li>
-                    <li><a href="#projects">Devanagari AI</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>Company</h4>
-                <ul>
-                    <li><a href="#about">About Us</a></li>
-                    <li><a href="#founder">Our Founder</a></li>
-                    <li><a href="#milestones">History</a></li>
-                    <li><a href="#technology">Technology Stack</a></li>
-                    <li><a href="#contact">Contact Us</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>Contact</h4>
-                <ul>
-                    <li><a href="tel:+97714770284"><i class="fas fa-phone" style="color:var(--accent);margin-right:0.5rem;font-size:0.8rem;"></i>+977-1-4770284</a></li>
-                    <li><a href="tel:+97714770472"><i class="fas fa-phone" style="color:var(--accent);margin-right:0.5rem;font-size:0.8rem;"></i>+977-1-4770472</a></li>
-                    <li><a href="tel:+9779864252381"><i class="fas fa-mobile-alt" style="color:var(--accent);margin-right:0.5rem;font-size:0.8rem;"></i>+977-9864252381</a></li>
-                    <li><a href="mailto:info@hightechpioneer.com.np"><i class="fas fa-envelope" style="color:var(--accent);margin-right:0.5rem;font-size:0.8rem;"></i>info@hightechpioneer.com.np</a></li>
-                    <li><a href="#contact"><i class="fas fa-map-marker-alt" style="color:var(--accent);margin-right:0.5rem;font-size:0.8rem;"></i>Dillibazar, Kathmandu</a></li>
-                </ul>
-            </div>
+<footer class="site-footer">
+    <div class="shell footer-grid">
+        <div>
+            <p class="footer-brand">High Tech Pioneer <small>(P)&nbsp;Ltd.</small></p>
+            <p class="footer-note">Nepal's first commercial computer hardware company.
+            First Devanagari computer, 1983. First supercomputer, 2006.</p>
         </div>
-        <div class="footer-bottom">
-            <p>© 2025 High Tech Pioneer Nepal (P) Ltd. All rights reserved.</p>
-            <p>Dillibazar, Kathmandu, Nepal &nbsp;·&nbsp; <a href="https://hightechpioneer.com.np">hightechpioneer.com.np</a></p>
+        <div>
+            <h2 class="footer-heading">Site</h2>
+            <ul>
+                <li><a href="{% url 'about' %}">History &amp; people</a></li>
+                <li><a href="{% url 'research' %}">Research</a></li>
+                <li><a href="{% url 'contact' %}">Contact &amp; visits</a></li>
+            </ul>
         </div>
+        <div>
+            <h2 class="footer-heading">Visit</h2>
+            <ul>
+                <li>Dillibazar, Kathmandu, Nepal</li>
+                <li><a href="tel:+97714770284">+977&#8209;1&#8209;4770284</a></li>
+                <li><a href="tel:+97714770472">+977&#8209;1&#8209;4770472</a></li>
+                <li><a href="mailto:info@hightechpioneer.com.np">info@hightechpioneer.com.np</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="shell footer-legal">
+        <p>© <span id="year">2026</span> High Tech Pioneer Nepal (P) Ltd.</p>
+        <p><a href="https://en.wikipedia.org/wiki/Muni_Sakya">Muni Bahadur Sakya on Wikipedia</a></p>
     </div>
 </footer>
 
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script src="{% static 'js/script.js' %}"></script>
-{% block extra_js %}{% endblock %}
+<script src="{% static 'js/script.js' %}" defer></script>
 </body>
 </html>

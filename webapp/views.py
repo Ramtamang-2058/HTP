@@ -1,88 +1,71 @@
 import os
 import re
-from django.shortcuts import render
-from django.http import StreamingHttpResponse, Http404
+
 from django.conf import settings
-from .models import ResearchPublication, Story
+from django.http import StreamingHttpResponse, Http404
+from django.shortcuts import render
+
+from .models import ResearchPublication, Story, Milestone, TeamMember
 
 
-def index(request):
-    research = ResearchPublication.objects.filter(is_published=True)
-    
-    stories = []
-    try:
-        stories = list(Story.objects.filter(is_active=True))
-    except Exception:
-        pass
+def _active_stories():
+    return list(Story.objects.filter(is_active=True))
 
-    if not stories:
-        stories = [
-            {
-                'id': 1,
-                'title': 'Muni Sakya',
-                'get_thumbnail': '/static/img/profiles/muni_bahadur_sakya.png',
-                'media_url': '/static/img/profiles/muni_bahadur_sakya.png',
-                'media_type': 'image',
-                'caption': "Founder Muni Bahadur Sakya demonstrating Nepal's first Devanagari computing (1983)."
-            },
-            {
-                'id': 2,
-                'title': '3D Robot Print',
-                'get_thumbnail': '/static/img/robots/robot_after_3d_print.jpeg',
-                'media_url': '/static/img/robots/robot_after_3d_print.jpeg',
-                'media_type': 'image',
-                'caption': 'InMoov humanoid robot frame assembled after 3D printing in the HTP lab.'
-            },
-            {
-                'id': 3,
-                'title': 'Hand Assembly',
-                'get_thumbnail': '/static/img/robots/robots_hand_assembling.png',
-                'media_url': '/static/img/robots/robots_hand_assembling.png',
-                'media_type': 'image',
-                'caption': 'Calibrating and assembling the mechanical hand degrees of freedom.'
-            },
-            {
-                'id': 4,
-                'title': 'Base Assembly',
-                'get_thumbnail': '/static/img/robots/assembling_after_print_upper_body.jpeg',
-                'media_url': '/video/building_base_robot.mov',
-                'media_type': 'video',
-                'caption': 'Video: Assembly of the mobile base robot in Dillibazar.'
-            },
-            {
-                'id': 5,
-                'title': 'Handshake Demo',
-                'get_thumbnail': '/static/img/robots/left_hand_break.png',
-                'media_url': '/video/handshke_robot.mov',
-                'media_type': 'video',
-                'caption': 'Video: Live humanoid robot handshake demonstration.'
-            }
-        ]
-        
-    return render(request, 'index.html', {'research': research, 'stories': stories})
+
+def home(request):
+    context = {
+        'stories': _active_stories(),
+        'latest_research': ResearchPublication.objects.filter(is_published=True)[:2],
+    }
+    return render(request, 'home.html', context)
+
+
+def about(request):
+    context = {
+        'milestones': Milestone.objects.filter(is_active=True),
+        'team': TeamMember.objects.filter(is_active=True),
+    }
+    return render(request, 'about.html', context)
+
+
+def research(request):
+    context = {
+        'publications': ResearchPublication.objects.filter(is_published=True),
+    }
+    return render(request, 'research.html', context)
+
+
+def contact(request):
+    return render(request, 'contact.html')
+
+
+CONTENT_TYPES = {
+    '.mov': 'video/quicktime',
+    '.mp4': 'video/mp4',
+    '.webm': 'video/webm',
+}
 
 
 def stream_video(request, filename):
     """
     Streams a video file from the static/videos/ directory with full
-    HTTP byte-range (Range header) support so browsers can seek, pause,
-    and resume large .mov / .mp4 files correctly.
+    HTTP byte-range support so browsers can seek, pause and resume.
     """
-    # Security: only allow safe filenames (no path traversal)
     if not re.match(r'^[\w\-]+\.(mov|mp4|webm)$', filename):
-        raise Http404("Invalid video filename")
+        raise Http404('Invalid video filename')
 
     video_path = os.path.join(settings.BASE_DIR, 'static', 'videos', filename)
     if not os.path.exists(video_path):
-        raise Http404("Video not found")
+        raise Http404('Video not found')
 
     file_size = os.path.getsize(video_path)
-    content_type = 'video/mp4'
+    extension = os.path.splitext(filename)[1].lower()
+    content_type = CONTENT_TYPES.get(extension, 'application/octet-stream')
 
     range_header = request.META.get('HTTP_RANGE', '').strip()
     range_match = re.match(r'bytes=(\d+)-(\d*)', range_header)
 
-    CHUNK = 8 * 1024 * 1024  # 8 MB chunks
+    CHUNK = 8 * 1024 * 1024  # 8 MB
 
     if range_match:
         first_byte = int(range_match.group(1))

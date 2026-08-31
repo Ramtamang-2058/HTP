@@ -8,7 +8,7 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="High Tech Pioneer Nepal">
 <meta property="og:title" content="Kancha — AI Humanoid Robot">
-<meta property="og:image" content="https://hightechpioneer.com.np/static/img/opt/robot_after_3d_print_1400.jpg">
+<meta property="og:image" content="https://hightechpioneer.com.np/static/img/opt/kancha_front_1400.jpg">
 <style>
   :root{
     --paper:#faf8f3; --paper-alt:#f2eee5; --ink:#211d16; --ink-soft:#4c463b;
@@ -55,12 +55,11 @@
   <div class="video-block">
     {% if video.file %}
     <video controls playsinline preload="metadata"
-           poster="https://hightechpioneer.com.np/static/img/opt/robot_after_3d_print_1400.jpg"
+           poster="https://hightechpioneer.com.np/static/img/opt/kancha_front_1400.jpg"
            src="{% url 'serve_media' video.slot %}"></video>
-    {% else %}
-    {% with url=video.effective_url %}
-    <video controls playsinline preload="metadata"
-           poster="https://hightechpioneer.com.np/static/img/opt/robot_after_3d_print_1400.jpg"
+        {% else %}
+        <video controls playsinline preload="metadata"
+           poster="https://hightechpioneer.com.np/static/img/opt/kancha_front_1400.jpg"
            src="{{ url }}"></video>
     {% endwith %}
     {% endif %}

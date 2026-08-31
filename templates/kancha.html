@@ -2,14 +2,14 @@
 {% load static %}
 
 {% block title %}Kancha — InMoov Humanoid Robot · High Tech Pioneer Nepal{% endblock %}
-{% block description %}Kancha, the AI humanoid robot built at High Tech Pioneer Lab, Kathmandu — real-time voice, LLM reasoning, computer vision and 26-servo movement in one working pipeline. Product ICT Award 2026 nominee.{% endblock %}
-{% block og_image %}https://hightechpioneer.com.np/static/img/opt/robot_after_3d_print_1400.jpg{% endblock %}
+{% block description %}Kancha, the AI humanoid robot built at High Tech Pioneer Lab, Kathmandu — real-time voice, LLM reasoning, computer vision and 26-servo movement in one working pipeline.{% endblock %}
+{% block og_image %}https://hightechpioneer.com.np/static/img/opt/kancha_front_1400.jpg{% endblock %}
 
 {% block content %}
 
 <section class="page-head">
     <div class="shell">
-        <p class="kicker">Robotics · Product ICT Award 2026</p>
+        <p class="kicker">Robotics · InMoov Humanoid</p>
         <h1>Kancha.</h1>
         <p class="lede">
             A voice-controlled humanoid robot built at the High Tech Pioneer Lab in Kathmandu.
@@ -22,9 +22,9 @@
 <section class="section">
     <div class="shell kancha-hero">
         <figure class="kancha-hero-figure">
-            <img src="{% static 'img/opt/robot_after_3d_print_1400.jpg' %}"
+            <img src="{% static 'img/opt/kancha_front_1400.jpg' %}"
                  width="1400" height="1050"
-                 alt="Kancha, the InMoov humanoid robot, assembled after 3D printing at the HTP Lab"
+                 alt="Kancha, the InMoov humanoid robot — upper body with head, arms and torso built at the HTP Lab"
                  fetchpriority="high">
         </figure>
         <div class="kancha-hero-copy">
@@ -265,11 +265,11 @@
             <div class="nomination-video" data-ict-video>
                 {% if item.file %}
                 <video controls playsinline preload="metadata"
-                       poster="{% static 'img/opt/robot_after_3d_print_1400.jpg' %}"
+                       poster="{% static 'img/opt/kancha_front_1400.jpg' %}"
                        src="{% url 'serve_media' item.slot %}"></video>
                 {% else %}
                 <video controls playsinline preload="metadata"
-                       poster="{% static 'img/opt/robot_after_3d_print_1400.jpg' %}"
+                       poster="{% static 'img/opt/kancha_front_1400.jpg' %}"
                        src="{{ item.effective_url }}"></video>
                 {% endif %}
                 {% if item.caption %}<p class="nomination-note">{{ item.caption }}</p>{% endif %}

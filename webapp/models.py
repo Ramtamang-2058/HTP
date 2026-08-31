@@ -39,6 +39,42 @@ class ResearchPublication(models.Model):
         return [a.strip() for a in self.authors.split(',') if a.strip()]
 
 
+class ProductMedia(models.Model):
+    """A user-managed media slot shown on the shared product page.
+
+    The shareable link stays constant — the file, caption and order are swapped
+    from the PIN-protected control panel without touching code.
+    """
+    MEDIA_TYPES = [
+        ('image', 'Image'),
+        ('video', 'Video'),
+    ]
+
+    slot = models.CharField(max_length=50, unique=True, help_text="Stable key, e.g. 'video' or 'image_1'. Never changes after creation.")
+    label = models.CharField(max_length=120, blank=True, help_text="Short label shown to viewers")
+    media_type = models.CharField(max_length=10, choices=MEDIA_TYPES)
+    file = models.FileField(upload_to='product_media/', blank=True, null=True)
+    fallback_path = models.CharField(max_length=500, blank=True, help_text="Optional static/media path used if no uploaded file is set, e.g. /static/img/robots/x.jpeg or /video/f.mp4")
+    caption = models.CharField(max_length=300, blank=True)
+    sort_order = models.IntegerField(default=0)
+    is_active = models.BooleanField(default=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ['sort_order', 'slot']
+        verbose_name = 'Product Media Slot'
+        verbose_name_plural = 'Product Media Slots'
+
+    def __str__(self):
+        return f'{self.slot} — {self.label or self.media_type}'
+
+    def effective_url(self):
+        """Prefer the uploaded file, else fall back to a static path."""
+        if self.file:
+            return self.file.url
+        return self.fallback_path or ''
+
+
 class Story(models.Model):
     title = models.CharField(max_length=100)
     media_url = models.CharField(max_length=500, help_text="Path to static file (e.g., static/img/robots/robot_after_3d_print.jpeg) or full URL")

@@ -1,0 +1,351 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Kancha — InMoov Humanoid Robot · High Tech Pioneer Nepal{% endblock %}
+{% block description %}Kancha, the AI humanoid robot built at High Tech Pioneer Lab, Kathmandu — real-time voice, LLM reasoning, computer vision and 26-servo movement in one working pipeline. Product ICT Award 2026 nominee.{% endblock %}
+{% block og_image %}https://hightechpioneer.com.np/static/img/opt/robot_after_3d_print_1400.jpg{% endblock %}
+
+{% block content %}
+
+<section class="page-head">
+    <div class="shell">
+        <p class="kicker">Robotics · Product ICT Award 2026</p>
+        <h1>Kancha.</h1>
+        <p class="lede">
+            A voice-controlled humanoid robot built at the High Tech Pioneer Lab in Kathmandu.
+            You talk to it the way you'd talk to a person — it hears you, sees the room around it,
+            and answers with conversation, a gesture, or a movement.
+        </p>
+    </div>
+</section>
+
+<section class="section">
+    <div class="shell kancha-hero">
+        <figure class="kancha-hero-figure">
+            <img src="{% static 'img/opt/robot_after_3d_print_1400.jpg' %}"
+                 width="1400" height="1050"
+                 alt="Kancha, the InMoov humanoid robot, assembled after 3D printing at the HTP Lab"
+                 fetchpriority="high">
+        </figure>
+        <div class="kancha-hero-copy">
+            <p class="kicker">The robot that reasons in the moment</p>
+            <h2>Not scripted. Decided live.</h2>
+            <p>
+                Kancha listens for a wake word, converts your speech to text, and uses a large
+                language model to decide <em>how</em> to respond — as conversation, a vision query,
+                or one of 30+ physical gestures. Most InMoov builds worldwide run pre-scripted
+                routines; Kancha's behaviour is chosen in the moment, not looked up from a script.
+            </p>
+            <p>
+                Built on the open-source InMoov platform, it fills a specific gap: no earlier Nepali
+                build combined real-time voice, LLM reasoning, computer vision and physical response
+                into a single working pipeline.
+            </p>
+            <div class="hero-actions">
+                <a class="button" href="#features">What it does</a>
+                <a class="button button-ghost" href="#build">See the build</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="factband" aria-label="Key facts">
+    <div class="shell factband-row">
+        <div><strong>26</strong><span>Servos — arms, hands, head, jaw</span></div>
+        <div><strong>30+</strong><span>Named physical gestures</span></div>
+        <div><strong>4</strong><span>Ultrasonic obstacle sensors</span></div>
+        <div><strong>4096</strong><span>Encoder counts per wheel rev</span></div>
+        <div><strong>2016</strong><span>Founder's ICT Pioneer Award &mdash; the lineage</span></div>
+    </div>
+</section>
+
+<section class="legacy-strip" aria-label="The HTP robotics lineage">
+    <div class="shell legacy-row">
+        <div class="legacy-head">
+            <p class="kicker kicker-light">Built on a Nepali legacy</p>
+            <h2>From a speaking robot to one that reasons.</h2>
+        </div>
+        <ol class="legacy-steps">
+            <li><span>2004&ndash;05</span><p>HTP Lab builds Nepal's first Nepali-speaking, obstacle-aware robot.</p></li>
+            <li><span>2016</span><p>Founder Muni Bahadur Sakya receives the ICT Pioneer Award.</p></li>
+            <li><span>2026</span><p>Kancha — rule-based robotics grown into LLM-driven embodied AI.</p></li>
+        </ol>
+    </div>
+</section>
+
+<section class="section section-alt" id="how">
+    <div class="shell">
+        <header class="section-head">
+            <p class="kicker">How it works</p>
+            <h2>One continuous pipeline: hear &rarr; think &rarr; see &rarr; move.</h2>
+        </header>
+
+        <ol class="pipeline">
+            <li>
+                <span class="pipe-step">01</span>
+                <div>
+                    <h3>Wake word &amp; speech</h3>
+                    <p>An offline Vosk wake word opens a conversation window, then Whisper
+                    turns your speech into text — English today, Nepali in the works.</p>
+                </div>
+            </li>
+            <li>
+                <span class="pipe-step">02</span>
+                <div>
+                    <h3>LLM intent reasoning</h3>
+                    <p>GPT-4o-mini routes every utterance to one of three intents — conversation,
+                    a vision query, or a physical gesture — and picks the response.</p>
+                </div>
+            </li>
+            <li>
+                <span class="pipe-step">03</span>
+                <div>
+                    <h3>Computer vision</h3>
+                    <p>A Jetson Nano runs face recognition (InsightFace), live object detection
+                    (YOLOv8) and on-demand scene description (GPT-4o) — so Kancha knows who is in
+                    the room and what's on the table.</p>
+                </div>
+            </li>
+            <li>
+                <span class="pipe-step">04</span>
+                <div>
+                    <h3>Physical response</h3>
+                    <p>26 servos across arms, hands, head and jaw perform the gesture; a wheeled
+                    base driven by an ESP32-S3 moves and turns, auto-stopping on obstacles.</p>
+                </div>
+            </li>
+        </ol>
+    </div>
+</section>
+
+<section class="section" id="features">
+    <div class="shell">
+        <header class="section-head">
+            <p class="kicker">Key features</p>
+            <h2>What Kancha can actually do.</h2>
+        </header>
+        <div class="feature-grid">
+            <article class="feature-card">
+                <h3>Natural voice interaction</h3>
+                <p>Wake-word detection and Whisper speech-to-text; a 30-second window means you
+                don't repeat the wake word mid-conversation. Say &ldquo;Stop&rdquo; anytime.</p>
+            </article>
+            <article class="feature-card">
+                <h3>LLM-driven intent</h3>
+                <p>One model decides the response: a conversation, a vision lookup, or any of 30+
+                gestures — wave, handshake, fist bump, namaste, salute and more.</p>
+            </article>
+            <article class="feature-card">
+                <h3>Continuous vision</h3>
+                <p>Face recognition, live YOLO object detection and on-demand GPT-4o scene
+                description, all injected into every conversation as room awareness.</p>
+            </article>
+            <article class="feature-card">
+                <h3>26-servo movement</h3>
+                <p>Arms, hands, fingers, head, eyes and jaw articulate naturally — including a
+                jaw that moves for speech, and gesture libraries people actually use.</p>
+            </article>
+            <article class="feature-card">
+                <h3>Closed-loop autonomous base</h3>
+                <p>A single ESP32-S3 drives the motors, tracks distance and heading with AS5600
+                magnetic encoders and a gyroscope, and auto-stops on any of four ultrasonics.</p>
+            </article>
+            <article class="feature-card">
+                <h3>Built for Nepal</h3>
+                <p>Designed for students, museum and event visitors, and researchers exploring
+                embodied AI — enough that a Nepali person can interact with it physically.</p>
+            </article>
+        </div>
+    </div>
+</section>
+
+<section class="section section-alt">
+    <div class="shell">
+        <header class="section-head">
+            <p class="kicker">Technology</p>
+            <h2>The stack behind the smile.</h2>
+        </header>
+        <div class="spec-grid">
+            <div class="spec"><span class="spec-label">Speech</span><p>Whisper (speech-to-text) &middot; gTTS / espeak (text-to-speech) &middot; Vosk (offline wake word)</p></div>
+            <div class="spec"><span class="spec-label">Understanding</span><p>GPT-4o-mini for intent routing and environment-aware conversation</p></div>
+            <div class="spec"><span class="spec-label">Vision</span><p>InsightFace face recognition &middot; YOLOv8 object detection &middot; GPT-4o scene description on Jetson Nano</p></div>
+            <div class="spec"><span class="spec-label">Movement</span><p>Arduino with dual 16-channel PCA9685 drivers &middot; 26 servos across arms, hands, head, jaw</p></div>
+            <div class="spec"><span class="spec-label">Base</span><p>ESP32-S3 &middot; AS5600 magnetic encoders &middot; gyroscope &middot; 4&times; HC-SR04 ultrasonics</p></div>
+            <div class="spec"><span class="spec-label">Platform</span><p>Open-source InMoov humanoid &middot; ROS 2 (Jazzy) node graph grows alongside the monolith</p></div>
+        </div>
+    </div>
+</section>
+
+<section class="section" id="usc">
+    <div class="shell kancha-hero reverse">
+        <figure class="kancha-hero-figure">
+            <img src="{% static 'img/robots/kancha_upper_front_view.jpeg' %}"
+                 width="960" height="1280" loading="lazy"
+                 alt="Front upper view of the Kancha humanoid robot">
+        </figure>
+        <div class="kancha-hero-copy">
+            <p class="kicker">Why it stands out</p>
+            <h2>A Nepali successor to Nepal's first robot.</h2>
+            <p>
+                Kancha is built at HTP Lab, the same lab founded by <strong>Muni Bahadur Sakya</strong> —
+                Nepal's first computer scientist, who built a Nepali-speaking, obstacle-aware robot in
+                2004&ndash;05 and received the ICT Pioneer Award in 2016.
+            </p>
+            <p>
+                Kancha continues that lineage — from rule-based robotics to LLM-driven reasoning — a small
+                team working with open hardware to build something otherwise mostly demonstrated by
+                well-funded laboratories abroad.
+            </p>
+        </div>
+    </div>
+</section>
+
+<section class="section section-alt" id="build">
+    <div class="shell">
+        <header class="section-head">
+            <p class="kicker">Anatomy of the build</p>
+            <h2>Every part earned its place by hand.</h2>
+            <p class="lede">
+                What looks like a friendly face is a stack of quietly hard-won engineering — a
+                wheeled base that measures its own distance, legs milled to fit, hands with
+                independent fingers, and a head whose camera doubles as its eyes. A portrait of
+                the build, part by part.
+            </p>
+        </header>
+        <div class="build-grid">
+            <figure>
+                <img src="{% static 'img/robots/kancha_base_unit.jpeg' %}" loading="lazy" alt="Kancha wheeled base unit">
+                <figcaption>The ESP32-S3 drive base — motors, encoders, gyro, ultrasonics.</figcaption>
+            </figure>
+            <figure>
+                <img src="{% static 'img/robots/kancha_left_leg.jpeg' %}" loading="lazy" alt="Kancha left leg">
+                <figcaption>Left leg, assembled.</figcaption>
+            </figure>
+            <figure>
+                <img src="{% static 'img/robots/kancha_right_leg_design.jpeg' %}" loading="lazy" alt="Kancha right leg design">
+                <figcaption>Right leg — design detail.</figcaption>
+            </figure>
+            <figure>
+                <img src="{% static 'img/robots/kancha_palm.jpeg' %}" loading="lazy" alt="Kancha palm and fingers">
+                <figcaption>The palm and finger servos — part of the 26-servo upper body.</figcaption>
+            </figure>
+            <figure>
+                <img src="{% static 'img/robots/kancha_right_side_upper_view.jpeg' %}" loading="lazy" alt="Kancha upper body, right side view">
+                <figcaption>Upper body, right side.</figcaption>
+            </figure>
+            <figure>
+                <img src="{% static 'img/robots/kancha_head_camera_view.jpeg' %}" loading="lazy" alt="Kancha head with camera mount">
+                <figcaption>Head assembly — the camera that feeds the vision system.</figcaption>
+            </figure>
+            <figure>
+                <img src="{% static 'img/robots/kancha_upper_back_wiring.jpeg' %}" loading="lazy" alt="Kancha upper back wiring">
+                <figcaption>Upper-back wiring — two PCA9685 drivers on 26 servos.</figcaption>
+            </figure>
+            <figure>
+                <img src="{% static 'img/robots/assembling_after_print_upper_body.jpeg' %}" loading="lazy" alt="Assembling the upper body after 3D printing">
+                <figcaption>Assembling the upper body after 3D printing.</figcaption>
+            </figure>
+        </div>
+    </div>
+</section>
+
+<section class="section section-alt" id="media">
+    <div class="shell">
+        <header class="section-head">
+            <p class="kicker">Product media</p>
+            <h2>Kancha in action.</h2>
+            <p class="lede">
+                The demo and build photos below are managed from a private control panel — so
+                the latest edit replaces them here and on the shared link instantly, no redeploy.
+            </p>
+        </header>
+
+        {% for item in media %}
+            {% if item.media_type == 'video' %}
+            <div class="nomination-video" data-ict-video>
+                {% if item.file %}
+                <video controls playsinline preload="metadata"
+                       poster="{% static 'img/opt/robot_after_3d_print_1400.jpg' %}"
+                       src="{% url 'serve_media' item.slot %}"></video>
+                {% else %}
+                <video controls playsinline preload="metadata"
+                       poster="{% static 'img/opt/robot_after_3d_print_1400.jpg' %}"
+                       src="{{ item.effective_url }}"></video>
+                {% endif %}
+                {% if item.caption %}<p class="nomination-note">{{ item.caption }}</p>{% endif %}
+            </div>
+            {% endif %}
+        {% endfor %}
+
+        {% with images=media %}
+        {% if images %}
+        <div class="build-grid">
+            {% for item in images %}
+                {% if item.media_type == 'image' %}
+                <figure>
+                    {% if item.file %}
+                    <img src="{% url 'serve_media' item.slot %}" loading="lazy" alt="{{ item.caption|default:item.label }}">
+                    {% else %}
+                    <img src="{{ item.effective_url }}" loading="lazy" alt="{{ item.caption|default:item.label }}">
+                    {% endif %}
+                    <figcaption>{{ item.caption|default:item.label }}</figcaption>
+                </figure>
+                {% endif %}
+            {% endfor %}
+        </div>
+        {% endif %}
+        {% endwith %}
+
+        <p class="nomination-share" style="margin-top:2rem">
+            <span>Share this page:</span>
+            <code><a href="{% url 'share_media' %}">hightechpioneer.com.np{% url 'share_media' %}</a></code>
+            &middot; <a href="{% url 'media_manager' %}">manage</a>
+        </p>
+    </div>
+</section>
+
+
+<section class="section section-alt">
+    <div class="shell">
+        <header class="section-head">
+            <p class="kicker">Three-year vision</p>
+            <h2>Where Kancha is headed.</h2>
+        </header>
+        <ol class="pipeline">
+            <li>
+                <span class="pipe-step">Y1</span>
+                <div>
+                    <h3>Out into the world</h3>
+                    <p>Deploy in real demonstration settings — STEM education, exhibitions and public
+                    events — while improving durability, including encoder- and stepper-based servos.</p>
+                </div>
+            </li>
+            <li>
+                <span class="pipe-step">Y2</span>
+                <div>
+                    <h3>Speaks Nepali natively</h3>
+                    <p>Extend native Nepali speech input and output, so Kancha holds a full
+                    conversation in Nepali — building on Whisper's multilingual support.</p>
+                </div>
+            </li>
+            <li>
+                <span class="pipe-step">Y3</span>
+                <div>
+                    <h3>Intelligence, decoupled</h3>
+                    <p>Separate the AI decision layer from the humanoid body so the same reasoning
+                    adapts to other forms — starting with a lower-cost desktop version for schools.</p>
+                </div>
+            </li>
+        </ol>
+    </div>
+</section>
+
+<section class="cta-band">
+    <div class="shell cta-inner">
+        <h2>Come meet Kancha.</h2>
+        <p>The lab door is open to students, engineers and researchers — or just bring your curiosity.</p>
+        <a class="button" href="{% url 'contact' %}">Visit the lab</a>
+    </div>
+</section>
+
+{% endblock %}

@@ -49,7 +49,7 @@ class PageSmokeTests(TestCase):
 class VideoEndpointTests(TestCase):
     def test_range_request_streams_partial_content(self):
         response = self.client.get(
-            reverse('stream_video', args=['building_base_robot.mov']),
+            reverse('stream_video', args=['building_base_robot.mp4']),
             HTTP_RANGE='bytes=0-1023',
         )
         self.assertEqual(response.status_code, 206)
@@ -57,7 +57,7 @@ class VideoEndpointTests(TestCase):
         self.assertTrue(response['Content-Range'].startswith('bytes 0-1023/'))
 
     def test_full_request_streams_200(self):
-        response = self.client.get(reverse('stream_video', args=['building_base_robot.mov']))
+        response = self.client.get(reverse('stream_video', args=['building_base_robot.mp4']))
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response['Accept-Ranges'], 'bytes')
 

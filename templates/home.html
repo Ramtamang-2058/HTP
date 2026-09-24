@@ -23,7 +23,7 @@
             </p>
             <div class="hero-actions">
                 <a class="button" href="{% url 'about' %}">Four decades of firsts</a>
-                <a class="button button-ghost" href="{% url 'research' %}">Our research</a>
+                <a class="button button-ghost" href="{% url 'kancha' %}">Meet Kancha, our robot</a>
             </div>
         </div>
         <figure class="hero-figure">
@@ -60,7 +60,7 @@
                      width="1400" height="1050" loading="lazy"
                      alt="Kancha, the InMoov humanoid robot built at the High Tech Pioneer lab">
                 <div class="project-body">
-                    <h3>InMoov humanoid robot</h3>
+                    <h3><a href="{% url 'kancha' %}">Kancha — InMoov humanoid robot</a></h3>
                     <p>
                         A life-size, 3D-printed humanoid built and programmed in Kathmandu.
                         Whisper speech recognition for Nepali and English, a vision-language model
@@ -68,6 +68,7 @@
                         control system with graceful fallbacks — a robot that sees, listens and answers.
                     </p>
                     <p class="project-meta">Software lead: Ram Kumar Tamang · Research: Subash Sigdel · Hardware: lab team</p>
+                    <p><a class="text-link" href="{% url 'kancha' %}">How Kancha works &#8594;</a></p>
                 </div>
             </article>
 

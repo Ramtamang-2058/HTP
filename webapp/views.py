@@ -56,7 +56,13 @@ def kancha(request):
 
 
 def robots(request):
-    lines = ['User-agent: *', 'Disallow: /admin/', '', f'Sitemap: https://hightechpioneer.com.np/sitemap.xml']
+    lines = [
+        'User-agent: *',
+        'Disallow: /admin/',
+        'Disallow: /media/manage',
+        '',
+        'Sitemap: https://hightechpioneer.com.np/sitemap.xml',
+    ]
     return HttpResponse('\n'.join(lines), content_type='text/plain')
 
 

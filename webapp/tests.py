@@ -46,6 +46,15 @@ class PageSmokeTests(TestCase):
         self.assertContains(response, 'content="noindex, nofollow"')
         self.assertNotContains(response, 'index, follow, max-image-preview')
 
+    def test_sitemap_lists_kancha(self):
+        response = self.client.get('/sitemap.xml')
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, '/robotics/kancha/')
+
+    def test_robots_blocks_media_manager(self):
+        response = self.client.get('/robots.txt')
+        self.assertContains(response, 'Disallow: /media/manage')
+
     def test_share_media_page(self):
         response = self.client.get(reverse('share_media'))
         self.assertEqual(response.status_code, 200)

@@ -9,7 +9,8 @@ from django.views.decorators.http import require_POST
 from .models import ResearchPublication, Story, Milestone, TeamMember, ProductMedia
 
 
-MEDIA_PIN = '2058'
+# Set MEDIA_PIN in the server environment; the fallback keeps existing setups working.
+MEDIA_PIN = os.getenv('MEDIA_PIN', '2058')
 
 
 def _active_stories():

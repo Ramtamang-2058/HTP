@@ -29,6 +29,16 @@ class PageSmokeTests(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, 'Dillibazar')
 
+    def test_kancha_page(self):
+        response = self.client.get(reverse('kancha'))
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, 'Kancha')
+
+    def test_share_media_page(self):
+        response = self.client.get(reverse('share_media'))
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, 'Kancha')
+
     def test_robots_txt(self):
         response = self.client.get('/robots.txt')
         self.assertEqual(response.status_code, 200)

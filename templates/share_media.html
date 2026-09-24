@@ -57,11 +57,10 @@
     <video controls playsinline preload="metadata"
            poster="https://hightechpioneer.com.np/static/img/opt/kancha_front_1400.jpg"
            src="{% url 'serve_media' video.slot %}"></video>
-        {% else %}
-        <video controls playsinline preload="metadata"
+    {% else %}
+    <video controls playsinline preload="metadata"
            poster="https://hightechpioneer.com.np/static/img/opt/kancha_front_1400.jpg"
-           src="{{ url }}"></video>
-    {% endwith %}
+           src="{{ video.effective_url }}"></video>
     {% endif %}
     {% if video.caption %}<p style="margin:.6rem 0 0;color:var(--ink-soft)">{{ video.caption }}</p>{% endif %}
   </div>

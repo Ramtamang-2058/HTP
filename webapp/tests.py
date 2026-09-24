@@ -34,6 +34,18 @@ class PageSmokeTests(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, 'Kancha')
 
+    def test_pages_have_self_canonical_and_og_url(self):
+        for name in ['home', 'about', 'research', 'contact', 'kancha']:
+            url = reverse(name)
+            response = self.client.get(url)
+            self.assertContains(response, f'<link rel="canonical" href="https://hightechpioneer.com.np{url}">')
+            self.assertContains(response, f'<meta property="og:url" content="https://hightechpioneer.com.np{url}">')
+
+    def test_media_manager_is_noindex(self):
+        response = self.client.get(reverse('media_manager'))
+        self.assertContains(response, 'content="noindex, nofollow"')
+        self.assertNotContains(response, 'index, follow, max-image-preview')
+
     def test_share_media_page(self):
         response = self.client.get(reverse('share_media'))
         self.assertEqual(response.status_code, 200)

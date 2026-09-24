@@ -41,6 +41,16 @@ class PageSmokeTests(TestCase):
             self.assertContains(response, f'<link rel="canonical" href="https://hightechpioneer.com.np{url}">')
             self.assertContains(response, f'<meta property="og:url" content="https://hightechpioneer.com.np{url}">')
 
+    def test_structured_data_is_valid_json(self):
+        import json
+        import re
+        for name in ['home', 'about', 'research', 'contact', 'kancha']:
+            html = self.client.get(reverse(name)).content.decode()
+            blocks = re.findall(r'<script type="application/ld\+json">(.*?)</script>', html, re.S)
+            self.assertTrue(blocks, name)
+            for block in blocks:
+                json.loads(block)
+
     def test_media_manager_is_noindex(self):
         response = self.client.get(reverse('media_manager'))
         self.assertContains(response, 'content="noindex, nofollow"')

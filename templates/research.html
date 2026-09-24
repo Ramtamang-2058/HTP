@@ -8,6 +8,32 @@
 {% block og_image %}https://hightechpioneer.com.np/static/img/opt/labnote_encoder_calibration_1400.jpg{% endblock %}
 {% block og_image_alt %}Hand-written lab notes deriving radius values from encoder readings{% endblock %}
 
+{% block extra_head %}
+{% if publications %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "itemListElement": [
+    {% for pub in publications %}{
+      "@type": "ListItem",
+      "position": {{ forloop.counter }},
+      "item": {
+        "@type": "ScholarlyArticle",
+        "headline": "{{ pub.title|escapejs }}",
+        "author": [{% for a in pub.get_authors_list %}{ "@type": "Person", "name": "{{ a|escapejs }}" }{% if not forloop.last %}, {% endif %}{% endfor %}],
+        "datePublished": "{{ pub.published_date|date:'Y-m-d' }}"{% if pub.venue %},
+        "publisher": { "@type": "Organization", "name": "{{ pub.venue|escapejs }}" }{% endif %}{% if pub.abstract %},
+        "abstract": "{{ pub.abstract|escapejs }}"{% endif %}{% if pub.external_url %},
+        "url": "{{ pub.external_url|escapejs }}"{% endif %}
+      }
+    }{% if not forloop.last %},{% endif %}{% endfor %}
+  ]
+}
+</script>
+{% endif %}
+{% endblock %}
+
 {% block content %}
 
 <section class="page-head">

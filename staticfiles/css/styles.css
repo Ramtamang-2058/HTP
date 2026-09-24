@@ -805,6 +805,7 @@ figcaption {
 }
 .nomination-share {
     font-size: .98rem;
+    margin-top: 2rem;
     margin-bottom: 0;
     word-break: break-all;
 }
